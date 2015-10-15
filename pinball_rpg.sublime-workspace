@@ -1,0 +1,621 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Getc",
+				"GetComponent	type"
+			],
+			[
+				"_ba",
+				"_ballRD"
+			],
+			[
+				"_b",
+				"_ballRD"
+			],
+			[
+				"De",
+				"Debug"
+			],
+			[
+				"ve",
+				"velocity"
+			],
+			[
+				"_",
+				"_ballRD"
+			],
+			[
+				"GetC",
+				"GetComponent	type"
+			],
+			[
+				"tr",
+				"Transform"
+			],
+			[
+				"log",
+				"Mathf.Log(f, p)"
+			],
+			[
+				"Onc",
+				"OnCollisionStay	collision"
+			],
+			[
+				"OnT",
+				"OnTriggerStay	other"
+			],
+			[
+				"active",
+				"GameObject.SetActive(value)"
+			],
+			[
+				"GUI",
+				"GUIText	[class]"
+			],
+			[
+				"GetCom",
+				"GetComponents	GameObject.*<T>()"
+			],
+			[
+				"val",
+				"value	NetworkSceneId.*"
+			],
+			[
+				"getin",
+				"getInt	PlayerPrefs.*(key, defaultValue)"
+			],
+			[
+				"fore",
+				"foreach	ForEach"
+			],
+			[
+				"str",
+				"string	[class]"
+			],
+			[
+				"player",
+				"playerPrefs	[class]"
+			],
+			[
+				"Sys",
+				"System"
+			],
+			[
+				"addF",
+				"Rigidbody.AddForce(x, y, z, mode)"
+			],
+			[
+				"ForceMode2d",
+				"ForceMode2D.Impulse"
+			],
+			[
+				"relative",
+				"relativeVelocity	Collision2D.*"
+			],
+			[
+				"Ve",
+				"Vector2	[class]"
+			],
+			[
+				"Draw",
+				"DrawRay	Gizmos.*(from, direction)"
+			],
+			[
+				"KeyCod",
+				"KeyCode.Space"
+			],
+			[
+				"Sp",
+				"Space	GUILayout.*(pixels)"
+			],
+			[
+				"Keyc",
+				"KeyCode.JoystickButton10	[property]"
+			],
+			[
+				"KeyC",
+				"KeyCode"
+			],
+			[
+				"GetKe",
+				"GetKeyDown	Input.*(key)"
+			],
+			[
+				"Bott",
+				"Bottom"
+			],
+			[
+				"addFor",
+				"Rigidbody2D.AddForce(force, mode)"
+			],
+			[
+				"ga",
+				"GameObject"
+			],
+			[
+				"w",
+				"while	while ... end"
+			],
+			[
+				"del",
+				"delete_at"
+			],
+			[
+				"li",
+				"lines"
+			],
+			[
+				"lin",
+				"line_count"
+			],
+			[
+				"fi",
+				"finish_work"
+			],
+			[
+				"n",
+				"non_used_list"
+			],
+			[
+				"Mo",
+				"MonkeyFile"
+			],
+			[
+				"var",
+				"variable"
+			],
+			[
+				"file",
+				"file_name"
+			],
+			[
+				"un",
+				"until	until ... end"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Assets/Scripts/Boss.cs",
+			"settings":
+			{
+				"buffer_size": 926,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/PinBallTable.cs",
+			"settings":
+			{
+				"buffer_size": 3608,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Hero.cs",
+			"settings":
+			{
+				"buffer_size": 1311,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/ItemBall.cs",
+			"settings":
+			{
+				"buffer_size": 393,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Hole.cs",
+			"settings":
+			{
+				"buffer_size": 426,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "ins",
+		"selected_items":
+		[
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: lis",
+				"Package Control: List Packages"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 600.0
+	},
+	"console":
+	{
+		"height": 181.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/UnityProject/PinBallRPG/Assets/Scripts"
+	],
+	"file_history":
+	[
+		"/D/UnityProject/PinBallRPG/Assets/Scripts/PinBallBar.cs",
+		"/D/UnityProject/PinBallRPG/Assets/Scripts/Bounce.cs",
+		"/C/Documents and Settings/USE/Application Data/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Documents and Settings/USE/Application Data/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/D/UnityProject/PinBallRPG/Assets/Scripts/RampCollider2D.cs",
+		"/D/UnityProject/PinBallRPG/Assets/Scripts/PinBallTable.cs",
+		"/D/UnityProject/PinBallRPG/Assets/Scripts/CameraFollow.cs",
+		"/D/UnityProject/PinBallRPG/Assets/Scripts/SimpleJSON.cs",
+		"/D/UnityProject/PinBallRPG/Assets/Scripts/ItemBox.cs",
+		"/D/UnityProject/PinBallRPG/Assets/Resources/item_list.json",
+		"/D/UnityProject/PinBallRPG/Assets/Scripts/Hero.cs",
+		"/D/UnityProject/PinBallRPG/Assets/Scripts/Buffer.cs",
+		"/D/UnityProject/PinBallRPG/Assets/item_list.json",
+		"/D/UnityProject/PinBallRPG/Assets/Scripts/SimpleJson.cs",
+		"/C/Documents and Settings/USE/桌面/SimpleJson.cs",
+		"/D/UnityProject/PinBallRPG/Assets/Scripts/Boss.cs",
+		"/C/Documents and Settings/USE/Application Data/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/D/UnityProject/PinBallRPG/pinball_rpg.sublime-project",
+		"/C/what_id_say/report_homu.rb",
+		"/C/what_id_say/homu_loop.rb",
+		"/C/what_id_say/get_homu.rb",
+		"/D/ProgramingMonkey/main.rb",
+		"/C/RubyGame/run.rb",
+		"/C/what_id_say/config/schedule.rb",
+		"/C/get_homu.rb",
+		"/C/aft.txt",
+		"/C/org.txt",
+		"/C/text.txt",
+		"/D/ProgramingMonkey/programing_monkey_ruby.rb",
+		"/D/ProgramingMonkey/test.rb",
+		"/D/ProgramingMonkey/counting_array.rb",
+		"/C/Documents and Settings/USE/Application Data/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/D/ProgramingMonkey/CountingArray",
+		"/D/ProgramingMonkey/monkey_ruby.rb",
+		"/C/RubyGame/lib/desktop.ini",
+		"/C/RubyGame/scripts/object/no_kidding.rb",
+		"/C/RubyGame/scripts/object/woodhorse.rb",
+		"/C/RubyGame/scripts/scenes/scene_map.rb",
+		"/C/RubyGame/scripts/game_window.rb",
+		"/C/Documents and Settings/USE/Application Data/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/C/Documents and Settings/USE/Application Data/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings"
+	],
+	"find":
+	{
+		"height": 43.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"_rigidbody",
+			"Ctrl+shift+g",
+			"Ctrl+shift+d",
+			"Ctrl+shift+y",
+			"Ctrl+shift+e",
+			"Indent",
+			"oJS",
+			"string",
+			"to",
+			"class ",
+			"class",
+			"Json",
+			"JsonNode",
+			"EscapeCharactersString",
+			"void",
+			"REPLY_PART_B",
+			" <a class=del href=\"javascript:void(0);\" onclick=\"del(7011729);return(false);\">del</a> &nbsp; \n[<a href=index.php?res=7011729>返信</a>]<br>",
+			"</blockquote></td></tr></table>\n<table border=0><tr><td nowrap align=right valign=top>…</td><td bgcolor=#F0E0D6>"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Assets/Scripts/Boss.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 926,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								337,
+								337
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/Scripts/PinBallTable.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3608,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								717,
+								717
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 405.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Assets/Scripts/Hero.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1311,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								767,
+								767
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Assets/Scripts/ItemBall.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 393,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								384,
+								384
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Assets/Scripts/Hole.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 426,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								377,
+								377
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 3,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 35.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 172.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 172.0
+	},
+	"output.variable_get":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "pinball_rpg.sublime-project",
+	"replace":
+	{
+		"height": 66.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 259.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

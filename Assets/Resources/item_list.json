@@ -1,0 +1,37 @@
+[
+  {
+    "id": 0,
+    "name": "null",
+    "path": "null",
+    "price": 0,
+    "description": "nothing."
+  },
+  {
+    "id": 1,
+    "name": "Hitpoint Up",
+    "path": "texture/GameStartButton",
+    "price": 20,
+    "description": "It can make your hitpoint value up."
+  },
+    {
+      "id" : 2,
+      "name": "Recover Up",
+      "path": "texture/BlackWizardHat",
+      "price":  20,
+      "description": "It can make your recover value up."
+    },
+  {
+    "id": 3,
+    "name": "Mana Up",
+    "path": "YellowStar",
+    "price":  20,
+    "description": "It can make your mana value up."
+  },
+  {
+    "id": 4,
+    "name": "Power Up",
+    "path": "FlyingAnt",
+    "price":  20,
+    "description": "It can make your attack value up."
+  }
+]
