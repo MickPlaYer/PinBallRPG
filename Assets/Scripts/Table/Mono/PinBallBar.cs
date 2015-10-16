@@ -18,6 +18,7 @@ public class PinBallBar : MonoBehaviour
     private State _state = State.Bottom;
     private KeyCode _keyCode = KeyCode.Space;
     private BarController _controller = null;
+    private AudioSource _audio;
 
     // Use this for initialization
     void Start()
@@ -25,6 +26,7 @@ public class PinBallBar : MonoBehaviour
         SetCollider();
         _angles = transform.eulerAngles;
         _angles.z = MIN_ANGLE;
+        _audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -56,6 +58,7 @@ public class PinBallBar : MonoBehaviour
     {
         if (_state == State.Bottom)
         {
+            _audio.Play();
             _controller = controller;
             _state = State.Upping;
         }
@@ -66,20 +69,27 @@ public class PinBallBar : MonoBehaviour
     {
         if (_state == State.Bottom)
         {
+            _audio.Play();
             _keyCode = keyCode;
             _state = State.Upping;
         }
+    }
+
+    public void ShutDown()
+    {
+        _state = State.Downing;
     }
 
     // Set the bar's colloder.
     private void SetCollider()
     {
         PolygonCollider2D polygonCollider = gameObject.AddComponent<PolygonCollider2D>();
-        Vector2[] points = new Vector2[4];
+        Vector2[] points = new Vector2[5];
         points[0] = new Vector2(0f, 0.5f);
         points[1] = new Vector2(0f, -0.5f);
-        points[2] = new Vector2(3.3f, -0.5f);
-        points[3] = new Vector2(3.3f, 0.2f);
+        points[2] = new Vector2(3.5f, -0.5f);
+        points[3] = new Vector2(3.5f, 0f);
+        points[4] = new Vector2(3.3f, 0.2f);
         polygonCollider.points = points;
     }
 

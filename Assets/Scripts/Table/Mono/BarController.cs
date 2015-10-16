@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class BarController : MonoBehaviour, IEventSystemHandler
 {
-    bool _buttonHeld = false;
+    public bool _buttonHeld = false;
 
     public void Pressed(BaseEventData eventData)
     {

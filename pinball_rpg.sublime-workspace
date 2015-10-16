@@ -4,15 +4,39 @@
 		"selected_items":
 		[
 			[
+				"Res",
+				"Resources"
+			],
+			[
+				"ga",
+				"gameObject"
+			],
+			[
+				"Pla",
+				"PlaySound"
+			],
+			[
+				"Add",
+				"AddComponent	className"
+			],
+			[
+				"Audio",
+				"AudioSource"
+			],
+			[
+				"_b",
+				"_barLeft"
+			],
+			[
+				"Translate",
+				"Transform.Translate(translation, relativeTo)"
+			],
+			[
 				"Getc",
 				"GetComponent	type"
 			],
 			[
 				"_ba",
-				"_ballRD"
-			],
-			[
-				"_b",
 				"_ballRD"
 			],
 			[
@@ -132,10 +156,6 @@
 				"Rigidbody2D.AddForce(force, mode)"
 			],
 			[
-				"ga",
-				"GameObject"
-			],
-			[
 				"w",
 				"while	while ... end"
 			],
@@ -180,43 +200,83 @@
 	"buffers":
 	[
 		{
-			"file": "Assets/Scripts/Boss.cs",
+			"file": "Assets/Scripts/Table/Mono/PinBallTable.cs",
 			"settings":
 			{
-				"buffer_size": 926,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Assets/Scripts/PinBallTable.cs",
-			"settings":
-			{
-				"buffer_size": 3608,
+				"buffer_size": 6058,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Hero.cs",
+			"file": "Assets/Scripts/Table/Mono/BarController.cs",
 			"settings":
 			{
-				"buffer_size": 1311,
+				"buffer_size": 458,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Assets/Scripts/ItemBall.cs",
+			"file": "Assets/Scripts/Table/Mono/Boss.cs",
 			"settings":
 			{
-				"buffer_size": 393,
+				"buffer_size": 938,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Hole.cs",
+			"file": "Assets/Scripts/Table/Mono/PinBallBar.cs",
 			"settings":
 			{
-				"buffer_size": 426,
+				"buffer_size": 3750,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Table/Mono/ColliderEffects/Buffer.cs",
+			"settings":
+			{
+				"buffer_size": 628,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Table/Mono/ColliderEffects/Hole.cs",
+			"settings":
+			{
+				"buffer_size": 663,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Table/Mono/ColliderEffects/Bounce.cs",
+			"settings":
+			{
+				"buffer_size": 943,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Table/Mono/Cover.cs",
+			"settings":
+			{
+				"buffer_size": 1430,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Table/Model/HeroData.cs",
+			"settings":
+			{
+				"buffer_size": 1533,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/HPBar.cs",
+			"settings":
+			{
+				"buffer_size": 601,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -273,10 +333,19 @@
 	},
 	"expanded_folders":
 	[
-		"/D/UnityProject/PinBallRPG/Assets/Scripts"
+		"/D/MyGit/PinBallRPG/Assets/Scripts",
+		"/D/MyGit/PinBallRPG/Assets/Scripts/Table",
+		"/D/MyGit/PinBallRPG/Assets/Scripts/Table/Model",
+		"/D/MyGit/PinBallRPG/Assets/Scripts/Table/Mono",
+		"/D/MyGit/PinBallRPG/Assets/Scripts/Table/Mono/ColliderEffects"
 	],
 	"file_history":
 	[
+		"/D/MyGit/PinBallRPG/Assets/Scripts/Hole.cs",
+		"/D/MyGit/PinBallRPG/Assets/Scripts/ItemBall.cs",
+		"/D/MyGit/PinBallRPG/Assets/Scripts/Hero.cs",
+		"/D/MyGit/PinBallRPG/Assets/Scripts/Boss.cs",
+		"/D/MyGit/PinBallRPG/Assets/Scripts/PinBallTable.cs",
 		"/D/UnityProject/PinBallRPG/Assets/Scripts/PinBallBar.cs",
 		"/D/UnityProject/PinBallRPG/Assets/Scripts/Bounce.cs",
 		"/C/Documents and Settings/USE/Application Data/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
@@ -370,24 +439,84 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Assets/Scripts/Boss.cs",
+					"file": "Assets/Scripts/Table/Mono/PinBallTable.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 926,
+						"buffer_size": 6058,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								337,
-								337
+								4986,
+								4986
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4131.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/Scripts/Table/Mono/BarController.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 458,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								182,
+								193
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Assets/Scripts/Table/Mono/Boss.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 938,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								699,
+								699
 							]
 						],
 						"settings":
@@ -404,20 +533,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "Assets/Scripts/PinBallTable.cs",
+					"buffer": 3,
+					"file": "Assets/Scripts/Table/Mono/PinBallBar.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3608,
+						"buffer_size": 3750,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								717,
-								717
+								692,
+								692
 							]
 						],
 						"settings":
@@ -427,27 +556,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 405.0,
+						"translation.y": 897.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "Assets/Scripts/Hero.cs",
+					"buffer": 4,
+					"file": "Assets/Scripts/Table/Mono/ColliderEffects/Buffer.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1311,
+						"buffer_size": 628,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								767,
-								767
+								152,
+								152
 							]
 						],
 						"settings":
@@ -456,7 +585,7 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -464,54 +593,56 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "Assets/Scripts/ItemBall.cs",
+					"buffer": 5,
+					"file": "Assets/Scripts/Table/Mono/ColliderEffects/Hole.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 393,
+						"buffer_size": 663,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								384,
-								384
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "Assets/Scripts/Hole.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 426,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								377,
-								377
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
-							"tab_size": 3,
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Assets/Scripts/Table/Mono/ColliderEffects/Bounce.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 943,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								187,
+								195
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -519,6 +650,96 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Assets/Scripts/Table/Mono/Cover.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1430,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								530,
+								378
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 81.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "Assets/Scripts/Table/Model/HeroData.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1533,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								896,
+								896
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "Assets/Scripts/HPBar.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 601,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								591,
+								591
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
 					"type": "text"
 				}
 			]

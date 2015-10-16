@@ -4,7 +4,7 @@ using System.Collections;
 public class HPBar : MonoBehaviour
 {
     private Transform _bar;
-    public float _scale = 1.0f;
+    private float _scale = 1.0f;
 
     // Use this for initialization
     void Start()
@@ -13,14 +13,22 @@ public class HPBar : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    // void Update()
+    // {
         
-    }
+    // }
 
     public void SetScale(float scale)
     {
-        _scale = scale;
-        _bar.localScale = new Vector3(scale, 1, 1);
+        if (scale < 0)
+            _scale = 0;
+        else
+            _scale = scale;
+        _bar.localScale = new Vector3(_scale, 1, 1);
+    }
+
+    public float Scale
+    {
+        get { return _scale; }
     }
 }

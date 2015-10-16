@@ -3,8 +3,14 @@ using System.Collections;
 
 public class Hole : MonoBehaviour
 {
-    public float velocity_down = 0.90f;
-    public float force_value = 300;
+    public float _velocityDown = 0.90f;
+    public float _forceValue = 300f;
+    public float _rotateSpeed = 10f;
+
+    void Update()
+    {
+        transform.Rotate(Vector3.back, _rotateSpeed);
+    }
 
     void OnTriggerStay2D(Collider2D other)
     {
@@ -12,7 +18,7 @@ public class Hole : MonoBehaviour
         float delta = vector.magnitude;
         vector.Normalize();
         Rigidbody2D rd = other.GetComponent<Rigidbody2D>();
-        rd.velocity *= velocity_down;
-        rd.AddForce(vector * force_value * (2 - delta) / 2, ForceMode2D.Force);
+        rd.velocity *= _velocityDown;
+        rd.AddForce(vector * _forceValue * (2.5f - delta) / 2.5f, ForceMode2D.Force);
     }
 }

@@ -28,6 +28,7 @@ public class Boss : MonoBehaviour
     {
         if (collision.gameObject.name == "Ball")
             _table.Bang(collision.relativeVelocity.magnitude);
+        transform.Translate(-collision.relativeVelocity / 100f);
     }
 
     public float HP

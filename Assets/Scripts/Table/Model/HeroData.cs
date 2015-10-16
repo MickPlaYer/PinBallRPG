@@ -35,7 +35,10 @@ public class HeroData
         get { return _hitPoint; }
         set
         {
-            _hitPoint = value;
+            if (value > _maxHitPoint)
+                _hitPoint = _maxHitPoint;
+            else
+                _hitPoint = value;
             _hpBar.SetScale(_hitPoint / _maxHitPoint);
         }
     }
