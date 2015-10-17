@@ -3,8 +3,8 @@ using System.Collections;
 
 public class ItemBall : MonoBehaviour
 {
-    public PinBallTable _table;
-    public Hole _hole;
+    private UILevelPad _levelPad;
+    private Hole _hole;
     private Rigidbody2D _rigidbody = null;
     private BoxCollider2D _collider = null;
     private int _count = 0;
@@ -12,8 +12,7 @@ public class ItemBall : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        _table = GameObject.Find("Table").GetComponent<PinBallTable>();
-        _hole = GameObject.Find("Hole").GetComponent<Hole>();
+        // Set random motion at start.
         float torque = Random.Range(100, 1000);
         float sign = Mathf.Sign(Random.value - 0.5f);
         Vector2 vector = Random.insideUnitCircle;
@@ -39,8 +38,15 @@ public class ItemBall : MonoBehaviour
             Vector2 vector = _hole.transform.position - transform.position;
             if (vector.magnitude < 0.1f)
             {
-                _table.PickItem(1, gameObject);
+                _levelPad.PickItem(1, gameObject);
             }
         }
+    }
+
+    // Set the level pad and hole.
+    public void SetRelatedObject(UILevelPad levelPad, Hole hole)
+    {
+        _levelPad = levelPad;
+        _hole = hole;
     }
 }

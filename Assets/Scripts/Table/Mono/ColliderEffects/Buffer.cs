@@ -8,11 +8,13 @@ public class Buffer : MonoBehaviour
 
     void Start ()
     {
+        // Create audio.
         _audio = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        // Let Ball get a buffer.
         if (collision.gameObject.name == "Ball")
         {
             if (_audio != null)

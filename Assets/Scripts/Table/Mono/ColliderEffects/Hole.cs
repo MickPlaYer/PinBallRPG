@@ -9,9 +9,11 @@ public class Hole : MonoBehaviour
 
     void Update()
     {
+        // Rotate
         transform.Rotate(Vector3.back, _rotateSpeed);
     }
 
+    // Make attraction
     void OnTriggerStay2D(Collider2D other)
     {
         Vector2 vector = transform.position - other.transform.position;

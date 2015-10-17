@@ -16,6 +16,7 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Avoid camera out of table zone.
         Vector3 camera = transform.position;
         bool isOutOfTop = _object.transform.position.y > _boundTop;
         bool isOutOfBottom = _object.transform.position.y < _boundBottom;

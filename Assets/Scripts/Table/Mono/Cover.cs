@@ -27,34 +27,41 @@ public class Cover : MonoBehaviour
     void Update ()
     {
         if (_heroHpBar.Scale >= 0.5f)
-        {
-            if (_state != States.None)
-            {
-                _sprite.color = Color.clear;
-                _state = States.None;
-            }
-        }
+            DoClear();
         else if (_heroHpBar.Scale > 0f)
-        {
-            _state = States.RedFlashing;
             DoRedFlash(_heroHpBar.Scale);
-        }
         else
+            DoBlackShutDown();
+    }
+
+    // Make cover clear.
+    private void DoClear()
+    {
+        if (_state != States.None)
         {
-            if (_state != States.Down)
-            {
-                _state = States.Down;
-                _sprite.color = new Color(0f, 0f, 0f, 0.75f);
-            }
+            _sprite.color = Color.clear;
+            _state = States.None;
         }
     }
 
+    // Make the red flash when low hp.
     private void DoRedFlash(float scale)
     {
+        _state = States.RedFlashing;
         _flashValue += _flashDelta;
         if (Mathf.Abs(_flashValue) > 0.1f)
             _flashDelta *= -1f;
         float alpha = 0.5f - (scale + _flashValue);
         _sprite.color = new Color(1f, 0f, 0f, alpha);
+    }
+
+    // Make cover into back when shut down.
+    private void DoBlackShutDown()
+    {            
+        if (_state != States.Down)
+        {
+            _state = States.Down;
+            _sprite.color = new Color(0f, 0f, 0f, 0.75f);
+        }
     }
 }

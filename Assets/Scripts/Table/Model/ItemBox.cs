@@ -24,6 +24,7 @@ public class ItemBox
         }
     }
 
+    // Add item to data list.
     public void PickUpItem(int id)
     {
         Item item = _boxList.Find(delegate(Item i) { return i.ID == id; });
@@ -33,6 +34,7 @@ public class ItemBox
             _boxList.Add(new Item(id, 1));
     }
 
+    // Save items to PlayerPrefs.
     public void SaveItems()
     {
         // Create new json array data

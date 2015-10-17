@@ -33,14 +33,7 @@ public class HeroData
     public float HP
     {
         get { return _hitPoint; }
-        set
-        {
-            if (value > _maxHitPoint)
-                _hitPoint = _maxHitPoint;
-            else
-                _hitPoint = value;
-            _hpBar.SetScale(_hitPoint / _maxHitPoint);
-        }
+        set { SetHitPoint(value); }
     }
 
     public float ATK
@@ -59,5 +52,15 @@ public class HeroData
     {
         get { return _mana; }
         set { _mana = value; }
+    }
+    
+    // Set hitpoint and follow its rule.
+    private void SetHitPoint(float value)
+    {
+        if (value > _maxHitPoint)
+            _hitPoint = _maxHitPoint;
+        else
+            _hitPoint = value;
+        _hpBar.Scale = _hitPoint / _maxHitPoint;
     }
 }

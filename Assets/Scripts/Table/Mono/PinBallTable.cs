@@ -6,16 +6,14 @@ public class PinBallTable : MonoBehaviour
 {
     private const int BASIC_SPEED = 20;
     private const int BALL_MOVE_UNIT = 1000;
-    private ItemBox _itemBox;
     private HeroData _hero;
     private Vector2 _startPoint = new Vector2(7f, -5.5f);
     private Rigidbody2D _ballRD;
-    private int _gameLevel = 1;
     private float _ballMoveCount = 0;
-    private List<GameObject> _itemList = new List<GameObject>();
-    // private List<AudioSource> _sounds = new List<AudioSource>();
     private Hashtable _sounds = new Hashtable();
-    public bool _resetSaves = false;
+    private bool _isEnd = false;
+    private int _flyNumberIndex = 0;
+    public int _debugLevel = 0;
     public float bottom = -8.5f;
     public PinBallBar _barLeft;
     public PinBallBar _barRight;
@@ -23,78 +21,82 @@ public class PinBallTable : MonoBehaviour
     public Boss _boss;
     public Hole _hole;
     public GameObject _ball;
-    public Cover _cover;
+    public UILevelPad _levelPad;
+    public FlyNumber[] _flyNumbers;
+    public RecNumber _recumber;
 
     // Use this for initialization
     void Start()
     {
-        if (_resetSaves)
+        if (_debugLevel != 0)
         {
             PlayerPrefs.DeleteAll();
+            // PlayerPrefs.SetInt("current_level", _debugLevel);
         }
-        _gameLevel = PlayerPrefs.GetInt("game_level", 1);
         _ballRD = _ball.GetComponent<Rigidbody2D>();
         _hero = new HeroData();
-        _itemBox = new ItemBox();
-
-        Object[] clips = Resources.LoadAll("Sounds/Table");
-        foreach (var clip in clips)
-        {
-            Debug.Log(clip.name);
-            AudioSource source = gameObject.AddComponent<AudioSource>();
-            source.clip = clip as AudioClip;
-            _sounds.Add(clip.name, source);
-        }
+        PrepareSounds();
     }
 
     // Update is called once per frame
     void Update()
     {
+        CheckBallDrop();
+        ControlInput();
         if (_hero.HP < 0)
             return;
-        ControlInput();
         DoBallMove();
-
         // Bellow is for Debug
         GetComponent<GUIText>().text = "Boss HP:" + _boss.HP.ToString() + "\nHero HP:" + _hero.HP.ToString();
         // Debug.DrawLine(_ball.transform.position, (Vector2)_ball.transform.position + _ballRD.velocity);
-        // Debug.Log(_ballRD.velocity.magnitude);
     }
 
     // When hero is attack the boss.
-    public void Bang(float value)
+    public void Bang(float speed)
     {
         PlaySound("Bang");
-        _boss.HP -= _hero.ATK * value / BASIC_SPEED;
+        int damage = (int)(_hero.ATK * speed / BASIC_SPEED);
+        if (damage < 1)
+            damage = 1;
+        _boss.HP -= damage;
         _hero.HP -= _boss.ATK;
         if (_hero.HP <= 0)
             OnHeroDead();
         if (_boss.HP <= 0)
             OnBossDead();
+        FlyANumber(_boss.transform.position, damage);
     }
 
-    // Add items to item box.
-    public void PickItem(int id, GameObject obj)
+    private void FlyANumber(Vector2 from, int damage)
     {
-        _itemBox.PickUpItem(id);
-        _itemList.Remove(obj);
-        Destroy(obj);
+        _flyNumbers[_flyNumberIndex].StartFly(from, damage);
+        _flyNumberIndex++;
+        if (_flyNumberIndex >= _flyNumbers.Length)
+            _flyNumberIndex = 0;
     }
 
     // When Boss HP -> 0
     private void OnBossDead()
     {
+        PlaySound("BossDie");
         _boss.gameObject.SetActive(false);
         _hole.gameObject.SetActive(true);
-        _ballRD.AddForce((_ball.transform.position - _boss.transform.position) * 500, ForceMode2D.Force);
         GameObject ojb = Resources.Load<GameObject>("Item");
+        // Create drop items
         for (int i = 0; i < 50; i++)
-            _itemList.Add(Instantiate(ojb));
+        {
+            GameObject item = Instantiate(ojb);
+            item.GetComponent<ItemBall>().SetRelatedObject(_levelPad, _hole);
+            _levelPad.AddItem(item);
+        }
+        _ballRD.AddForce((_ball.transform.position - _boss.transform.position) * 500, ForceMode2D.Force);
     }
 
     // When Hero HP -> 0
     private void OnHeroDead()
     {
+        if (_isEnd)
+            return;
         var left = GameObject.Find("BufferTriangleLeft/Buffer");
         if (left != null)
             left.SetActive(false);
@@ -106,18 +108,14 @@ public class PinBallTable : MonoBehaviour
         _barLeft.ShutDown();
         _barRight.ShutDown();
         PlaySound("ShutDown");
-    }
-
-    // Play sound from hash table.
-    private void PlaySound(string hash)
-    {
-        (_sounds[hash] as AudioSource).Play();
+        _isEnd = true;
     }
 
     // Set ball to start point.
     private void SetBallToStartPoint()
     {
         _ballRD.velocity = Vector2.zero;
+        _ballRD.angularVelocity = 0f;
         _ball.transform.position = _startPoint;
     }
 
@@ -125,7 +123,6 @@ public class PinBallTable : MonoBehaviour
     private void DoBallMove()
     {
         OnBallMoveUnit();
-        CheckBallDrop();
         CheckBallInHole();
     }
 
@@ -136,6 +133,8 @@ public class PinBallTable : MonoBehaviour
         if (_ballMoveCount >= BALL_MOVE_UNIT)
         {
             // Hero do recover.
+            if (_hero.HP < _hero.MaxHP)
+                _recumber.Show((int)_hero.REC);
             _hero.HP += _hero.REC;
             _ballMoveCount -= BALL_MOVE_UNIT;
         }
@@ -150,54 +149,59 @@ public class PinBallTable : MonoBehaviour
             if (_hero.HP <= 0)
             {
                 OnHeroDead();
-                ShowLevelFailPad();
+                _levelPad.ShowFailPad();
             }
             else
+            {
+                PlaySound("DropDown");
                 SetBallToStartPoint();
+            }
         }
     }
 
     // Check ball droppong in hole.
     private void CheckBallInHole()
     {
-        Vector2 vector = _hole.transform.position - _ball.transform.position;
-        float speed = _ballRD.velocity.magnitude;
         if (!_ballRD.isKinematic)
-        {
-            if (vector.magnitude < 0.1f && speed < 1)
-            {
-                _ball.transform.position = _hole.transform.position;
-                _ballRD.isKinematic = true;
-                PlaySound("InToHole");
-            }
-        }
+            StuckAtHole();
         else
+            BeforeNextLevel();
+    }
+
+    // Stuck ball into hole when it can.
+    private void StuckAtHole()
+    {
+        Vector2 length = _hole.transform.position - _ball.transform.position;
+        float speed = _ballRD.velocity.magnitude;
+        if (length.magnitude < 0.1f && speed < 1)
         {
-            if (_ball.transform.localScale.x < 0.01f)
-            {
-                if (_itemList.Count == 0)
-                {
-                    ToNextLevel();
-                }
-            }
-            else 
-                _ball.transform.localScale *= 0.9f;
+            _ball.transform.position = _hole.transform.position;
+            _ballRD.isKinematic = true;
+            PlaySound("InToHole");
         }
     }
 
-    // Go to next level.
-    private void ToNextLevel()
+    // Check item balls are all get into the hole.
+    private void BeforeNextLevel()
     {
-        _itemBox.SaveItems();
-        _gameLevel++;
-        PlayerPrefs.SetInt("game_level", _gameLevel);
-        PlayerPrefs.Save();
-        Application.LoadLevel("PinBallTable");
+        _ball.transform.localScale *= 0.9f;
+        if (_ball.transform.localScale.x < 0.01f)
+            if (_levelPad.IsAllItemPicked)
+            {        
+                if (_isEnd)
+                    return;
+                _levelPad.ShowSuccessPad();
+                _barLeft.ShutDown();
+                _barRight.ShutDown();
+                _isEnd = true;
+            }
     }
 
     // Contorl the input.
     private void ControlInput()
     {
+        if (_isEnd)
+            return;
         // For mobiles.
         if (_controller[0].GetButton())
             _barLeft.GoUp(_controller[0]);
@@ -210,8 +214,21 @@ public class PinBallTable : MonoBehaviour
             _barRight.GoUp(KeyCode.D);
     }
 
-    private void ShowLevelFailPad()
+    // Load sounds into hash table.
+    private void PrepareSounds()
     {
+        Object[] clips = Resources.LoadAll("Sounds/Table");
+        foreach (var clip in clips)
+        {
+            AudioSource source = gameObject.AddComponent<AudioSource>();
+            source.clip = clip as AudioClip;
+            _sounds.Add(clip.name, source);
+        }
+    }
 
+    // Play sound from hash table.
+    private void PlaySound(string hash)
+    {
+        (_sounds[hash] as AudioSource).Play();
     }
 }

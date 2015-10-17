@@ -75,6 +75,7 @@ public class PinBallBar : MonoBehaviour
         }
     }
 
+    // Cancle holding top.
     public void ShutDown()
     {
         _state = State.Downing;

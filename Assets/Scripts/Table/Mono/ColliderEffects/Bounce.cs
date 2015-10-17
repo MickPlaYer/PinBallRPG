@@ -9,6 +9,7 @@ public class Bounce : MonoBehaviour
 
     void Start ()
     {
+        // Create audio.
         if (_createAudioSouce)
         {
             _audio = gameObject.AddComponent<AudioSource>();
@@ -18,6 +19,7 @@ public class Bounce : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        // Let Ball get a rebound force.
         if (collision.gameObject.name == "Ball")
         {
             Rigidbody2D ball = collision.gameObject.GetComponent<Rigidbody2D>();

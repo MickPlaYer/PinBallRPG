@@ -8,6 +8,7 @@ public class RampCollider2D : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        // Create PolygonCollider2D by code;
         _edgeCollider = gameObject.AddComponent<PolygonCollider2D>();
         Vector2[] points = new Vector2[3];
         points[0] = new Vector2(-0.5f, 0.5f);
