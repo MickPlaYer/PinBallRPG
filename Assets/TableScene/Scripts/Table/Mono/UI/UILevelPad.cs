@@ -1,18 +1,18 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class UILevelPad : MonoBehaviour
 {
     private const string CURRENT_LEVEL_KEY = "current_level";
-    private const string LEVEL_ = "Level ";
-    private const string FAIL_STAY = "TRY\nAGAIN";
-    private const string FAIL_EXIT = "START\nMENU";
-    private const string FAIL_TITLE = " Fail!";
-    private const string CLEAR_STAY = "NEXT\nLEVEL";
-    private const string CLEAR_EXIT = "START\nMENU";
-    private const string CLEAR_TITLE = " Clear!";
+    private const string LEVEL_ = "關卡 ";
+    private const string FAIL_STAY = "再試\n一次";
+    private const string FAIL_EXIT = "回到\n選單";
+    private const string FAIL_TITLE = " 失敗！";
+    private const string CLEAR_STAY = "到下\n一關";
+    private const string CLEAR_EXIT = "回到\n選單";
+    private const string CLEAR_TITLE = " 通過！";
     private ItemBox _itemBox;
     private List<GameObject> _itemList = new List<GameObject>();
     private int _gameLevel = 1;
@@ -30,15 +30,6 @@ public class UILevelPad : MonoBehaviour
         rect.anchoredPosition = Vector2.zero;
         gameObject.SetActive(false);
     }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        if (_stay == null)
-            Debug.Log("_stay = null");
-        if (_exit == null)
-            Debug.Log("_exit == null");
-    }
 
     // Show the pad when level fail.
     public void ShowFailPad()
@@ -54,7 +45,7 @@ public class UILevelPad : MonoBehaviour
 
     // Show the pad when level clear.
     public void ShowSuccessPad()
-    {   
+    {
         if (gameObject.activeSelf)
             return;
         // Set texts.

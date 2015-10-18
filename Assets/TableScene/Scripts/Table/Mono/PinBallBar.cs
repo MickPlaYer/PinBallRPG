@@ -128,9 +128,9 @@ public class PinBallBar : MonoBehaviour
     private void Turn()
     {
         if (_state == State.Upping)
-            _angles.z += UNIT_ANGLE;
+            _angles.z += UNIT_ANGLE * Time.deltaTime * 60f;
         else if (_state == State.Downing)
-            _angles.z -= UNIT_ANGLE;
+            _angles.z -= UNIT_ANGLE * Time.deltaTime * 60f;
         transform.eulerAngles = _angles;
     }
 }

@@ -10,7 +10,7 @@ public class Hole : MonoBehaviour
     void Update()
     {
         // Rotate
-        transform.Rotate(Vector3.back, _rotateSpeed);
+        transform.Rotate(Vector3.back, _rotateSpeed * Time.deltaTime * 60f);
     }
 
     // Make attraction
