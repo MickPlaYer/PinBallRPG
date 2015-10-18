@@ -41,7 +41,6 @@ public class MenuButton : MonoBehaviour {
                 _thingsToTransform[_temp].SetActive(false);
                 _time = 0;
                 _temp++;
-                Debug.Log(_temp);
             }
             PanelTransform();
         }

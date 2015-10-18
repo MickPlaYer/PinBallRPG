@@ -14,12 +14,13 @@ public class ItemBox
         TextAsset default_item_box = Resources.Load(DEFAULT_BOX) as TextAsset;
         // Get string from PlayerPrefs
         string itemBox = PlayerPrefs.GetString(ITEM_BOX_KEY, default_item_box.text);
+        Debug.Log(itemBox);
         var data = JSON.Parse(itemBox);
         // Transfer data to list
         for (int i = 0; i < data.Count; i++)
         {
             int id = data[i]["id"].AsInt;
-            int number = data[i]["number"].AsInt;
+            int number = data[i]["amount"].AsInt;
             _boxList.Add(new Item(id, number));
         }
     }
@@ -44,10 +45,11 @@ public class ItemBox
         {
             var node = JSON.Parse("{}");
             node["id"].AsInt = i.ID;
-            node["number"].AsInt = i.Number;
+            node["amount"].AsInt = i.Number;
             data.Add(node);
         }
         // Save data to PlayerPrefs
         PlayerPrefs.SetString(ITEM_BOX_KEY, data.ToString());
+        Debug.Log(data.ToString());
     }
 }

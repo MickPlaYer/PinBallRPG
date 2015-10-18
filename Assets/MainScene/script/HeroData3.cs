@@ -175,7 +175,7 @@ public class HeroData3 : MonoBehaviour {
         battleValue["recovery"] = (data["recovery"].AsInt + _bRe).ToString();
         _battleValue = battleValue.ToString();
         PlayerPrefs.SetString("battle_value", _battleValue);
-        Debug.Log(battleValue);
+        // Debug.Log(battleValue);
     }
 
 
