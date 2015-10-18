@@ -93,7 +93,7 @@ public class HeroData3 : MonoBehaviour {
         }
 
         _item_box = box.ToString();
-        PlayerPrefs.SetString("_item_box", _item_box);
+        PlayerPrefs.SetString("item_box", _item_box);
         PlayerPrefs.SetString("_equipment", _equipment);
         setValue();
         //ReLoad();
@@ -138,7 +138,7 @@ public class HeroData3 : MonoBehaviour {
        _equipment = equ.ToString();
         setValue();
         //ReLoad();
-        PlayerPrefs.SetString("_item_box", _item_box);
+        PlayerPrefs.SetString("item_box", _item_box);
         PlayerPrefs.SetString("_equipment", _equipment);
          Debug.Log(_equipment);
     }
@@ -212,7 +212,7 @@ public class HeroData3 : MonoBehaviour {
         
         // Get string from PlayerPrefs.
             _battleValue = PlayerPrefs.GetString("battle_value", default_hero_data);
-        _item_box = PlayerPrefs.GetString("_item_box", default_box);
+        _item_box = PlayerPrefs.GetString("item_box", default_box);
 
         _hero_data = PlayerPrefs.GetString("_hero_data", default_hero_data);
 
@@ -227,7 +227,7 @@ public class HeroData3 : MonoBehaviour {
         string default_list = Resources.Load<TextAsset>("item_list").text;
         string default_hero_data = Resources.Load<TextAsset>("default_hero_data").text;
         string default_equipment = Resources.Load<TextAsset>("equipment").text;
-        PlayerPrefs.SetString("_item_box", default_box);
+        PlayerPrefs.SetString("item_box", default_box);
         PlayerPrefs.SetString("_hero_data", default_hero_data);
         PlayerPrefs.SetString("_item_list", default_list);
         PlayerPrefs.SetString("_equipment", default_equipment);
