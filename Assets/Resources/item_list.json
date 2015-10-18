@@ -4,34 +4,49 @@
     "name": "null",
     "path": "null",
     "price": 0,
-    "description": "nothing."
+    "description": "nothing.",
+    "hit_point": 0,
+    "attack_point": 0,
+    "recovery": 0
   },
   {
     "id": 1,
     "name": "Hitpoint Up",
     "path": "texture/GameStartButton",
     "price": 20,
-    "description": "It can make your hitpoint value up."
+    "description": "It can make your hitpoint value up.",
+         "hit_point": 20,
+    "attack_point": 0,
+    "recovery": 0
   },
     {
       "id" : 2,
       "name": "Recover Up",
       "path": "texture/BlackWizardHat",
       "price":  20,
-      "description": "It can make your recover value up."
+      "description": "It can make your recover value up.",
+         "hit_point": 0,
+    "attack_point": 0,
+    "recovery": 5
     },
   {
     "id": 3,
-    "name": "Mana Up",
-    "path": "YellowStar",
+    "name": "Atk Up",
+    "path": "texture/YellowStar",
     "price":  20,
-    "description": "It can make your mana value up."
+    "description": "It can make your mana value up.",
+       "hit_point": 0,
+    "attack_point": 10,
+    "recovery": 0
   },
   {
     "id": 4,
     "name": "Power Up",
-    "path": "FlyingAnt",
+    "path": "texture/FlyingAnt",
     "price":  20,
-    "description": "It can make your attack value up."
+    "description": "It can make your attack value up.",
+       "hit_point": 0,
+    "attack_point": 0,
+    "recovery": 0
   }
 ]
