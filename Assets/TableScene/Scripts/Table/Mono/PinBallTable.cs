@@ -13,6 +13,7 @@ public class PinBallTable : MonoBehaviour
     private Hashtable _sounds = new Hashtable();
     private bool _isEnd = false;
     private int _flyNumberIndex = 0;
+    public ComboBox _comboBox;
     public int _debugLevel = 0;
     public float bottom = -8.5f;
     public PinBallBar _barLeft;
@@ -55,9 +56,7 @@ public class PinBallTable : MonoBehaviour
     public void Bang(float speed)
     {
         PlaySound("Bang");
-        int damage = (int)(_hero.ATK * speed / BASIC_SPEED);
-        if (damage < 1)
-            damage = 1;
+        int damage = GetHeroAttackDamage(speed);
         _boss.HP -= damage;
         _hero.HP -= _boss.ATK;
         if (_hero.HP <= 0)
@@ -67,6 +66,18 @@ public class PinBallTable : MonoBehaviour
         FlyANumber(_boss.transform.position, damage);
     }
 
+    // Get hero's attack damage by speed and combo.
+    private int GetHeroAttackDamage(float speed)
+    {
+        float comboBonus = 1f + (_comboBox.Count * 0.25f);
+        float speedBonus = speed / BASIC_SPEED;
+        int damage = (int)(_hero.ATK * comboBonus * speedBonus);
+        if (damage < 1)
+            damage = 1;
+        return damage;
+    }
+
+    // Throw a fly number.
     private void FlyANumber(Vector2 from, int damage)
     {
         _flyNumbers[_flyNumberIndex].StartFly(from, damage);
@@ -103,12 +114,19 @@ public class PinBallTable : MonoBehaviour
         var right = GameObject.Find("BufferTriangleRight/Buffer");
         if (right != null)
             right.SetActive(false);
+        ShutDownTable();
+        PlaySound("ShutDown");
+        _isEnd = true;
+    }
+
+    // Shut down the objects on the table.
+    private void ShutDownTable()
+    {
         _controller[0]._buttonHeld = false;
         _controller[1]._buttonHeld = false;
         _barLeft.ShutDown();
         _barRight.ShutDown();
-        PlaySound("ShutDown");
-        _isEnd = true;
+        _comboBox.ShutDown();
     }
 
     // Set ball to start point.
@@ -190,9 +208,8 @@ public class PinBallTable : MonoBehaviour
             {
                 if (_isEnd)
                     return;
+                ShutDownTable();
                 _levelPad.ShowSuccessPad();
-                _barLeft.ShutDown();
-                _barRight.ShutDown();
                 _isEnd = true;
             }
     }
@@ -212,6 +229,8 @@ public class PinBallTable : MonoBehaviour
             _barLeft.GoUp(KeyCode.A);
         if (Input.GetKey(KeyCode.D))
             _barRight.GoUp(KeyCode.D);
+        if (Input.GetKey(KeyCode.Escape))
+            _levelPad.LoadMenuScene();
     }
 
     // Load sounds into hash table.
