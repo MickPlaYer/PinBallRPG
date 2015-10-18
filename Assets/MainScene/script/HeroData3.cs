@@ -9,7 +9,8 @@ public class HeroData3 : MonoBehaviour {
     string _hero_data;
     string _equipment;
     string _battleValue;
-    public int _bAtk = 0, _bHp = 0, _bRe = 0;
+    int _currentLevel, _maxLevel=1;
+    public int _bAtk = 0, _bHp = 0, _bRe = 0,_bMa=0;
 
     // Use this for initialization
     void Start () {
@@ -26,6 +27,13 @@ public class HeroData3 : MonoBehaviour {
 	
 	}
 
+    public int getMaxLevel()
+    {
+        //Debug.Log(PlayerPrefs.GetInt("current_level"));
+        if (PlayerPrefs.GetInt("current_level") > PlayerPrefs.GetInt("max_level"))
+            PlayerPrefs.SetInt("max_level", PlayerPrefs.GetInt("current_level"));
+        return PlayerPrefs.GetInt("max_level");
+    }
 
     public string getBox()
     {
@@ -132,7 +140,7 @@ public class HeroData3 : MonoBehaviour {
             if (equ[i]["id"].AsInt == id)
             {
                 equ.Remove(i);
-                Debug.Log("box:" +_item_box);
+               // Debug.Log("box:" +_item_box);
             }
         }
        _equipment = equ.ToString();
@@ -140,13 +148,13 @@ public class HeroData3 : MonoBehaviour {
         //ReLoad();
         PlayerPrefs.SetString("item_box", _item_box);
         PlayerPrefs.SetString("_equipment", _equipment);
-         Debug.Log(_equipment);
+        // Debug.Log(_equipment);
     }
 
     public void setValue()
     {
 
-         _bAtk =  _bHp =  _bRe = 0;
+         _bAtk =  _bHp =  _bRe=_bMa = 0;
         var equ = JSON.Parse(_equipment);
         var list = JSON.Parse(_item_list);
         var data = JSON.Parse(_hero_data);
@@ -173,15 +181,17 @@ public class HeroData3 : MonoBehaviour {
 
         battleValue["attack_point"] = (data["attack_point"].AsInt + _bAtk).ToString();
         battleValue["recovery"] = (data["recovery"].AsInt + _bRe).ToString();
+        battleValue["mana"] = (data["mana"].AsInt + _bMa).ToString();
+        battleValue["money"] = (data["money"].AsInt).ToString();
         _battleValue = battleValue.ToString();
         PlayerPrefs.SetString("battle_value", _battleValue);
     }
 
 
-    public void BuyItem(int id, int amount)
+    public void BuyItem(int id, int amount,int price)
     {
         bool hasItem = false;
-
+        var data = JSON.Parse(_hero_data);
         var box = JSON.Parse(_item_box);
         for (int i = 0; i < box.Count; i++)
         {
@@ -198,9 +208,17 @@ public class HeroData3 : MonoBehaviour {
             box.Add(JSON.Parse(itemToAdd));
         }
         _item_box = box.ToString();
+        
+        data["money"] = (data["money"].AsInt - price).ToString();
+        _hero_data = data.ToString();
+        //Debug.Log(data["money"]);
+        PlayerPrefs.SetString("_hero_data", _hero_data);
+        PlayerPrefs.SetString("item_box", _item_box);
+        setValue();
         //ReLoad();
         // Debug.Log(_equipment);
     }
+
 
     public void ReLoad()
     {
@@ -226,6 +244,8 @@ public class HeroData3 : MonoBehaviour {
         string default_list = Resources.Load<TextAsset>("item_list").text;
         string default_hero_data = Resources.Load<TextAsset>("default_hero_data").text;
         string default_equipment = Resources.Load<TextAsset>("equipment").text;
+        PlayerPrefs.SetInt("current_level", 1);
+        PlayerPrefs.SetInt("max_level", 1);
         PlayerPrefs.SetString("item_box", default_box);
         PlayerPrefs.SetString("_hero_data", default_hero_data);
         PlayerPrefs.SetString("_item_list", default_list);

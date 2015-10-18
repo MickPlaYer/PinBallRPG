@@ -53,5 +53,10 @@ public class ShowHeroInfo : MonoBehaviour {
         }
     }
 
+    public void Initialize()
+    {
+        gameObject.SetActive(false);
+        _trigger = false;
+    }
 
 }
