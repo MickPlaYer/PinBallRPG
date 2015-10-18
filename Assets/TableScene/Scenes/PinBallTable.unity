@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _comboBox: {fileID: 1706380553}
-  _debugLevel: 100
+  _debugLevel: 0
   bottom: -8.5
   _barLeft: {fileID: 976198429}
   _barRight: {fileID: 1384883567}

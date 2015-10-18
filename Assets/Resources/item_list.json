@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "id": 0,
     "name": "null",
@@ -11,70 +11,102 @@
   },
   {
     "id": 1,
-    "name": "Hitpoint Up",
+    "name": "紅水晶(小)",
     "path": "texture/GameStartButton",
     "price": 20,
-    "description": "It can make your hitpoint value up.",
-         "hit_point": 20,
+    "description": "增加血量 5",
+         "hit_point": 5,
     "attack_point": 0,
     "recovery": 0
   },
     {
       "id" : 2,
-      "name": "Recover Up",
+      "name": "恢復水晶(小)",
       "path": "texture/BlackWizardHat",
       "price":  20,
-      "description": "It can make your recover value up.",
+      "description": "增加恢復力 1",
          "hit_point": 0,
     "attack_point": 0,
-    "recovery": 5
+    "recovery": 1
     },
+
   {
     "id": 3,
-    "name": "Atk Up",
-    "path": "texture/YellowStar",
-    "price":  20,
-    "description": "It can make your mana value up.",
-       "hit_point": 0,
-    "attack_point": 10,
-    "recovery": 0
-  },
-  {
-    "id": 4,
-    "name": "Power Up",
+    "name": "匕首",
     "path": "texture/FlyingAnt",
     "price": 20,
-    "description": "It can make your attack value up.",
-    "hit_point": 0,
+    "description": "增加攻擊力 5",
+    "hit_point": 5,
+    "attack_point": 0,
+    "recovery": 0
+  }
+  {
+    "id": 4,
+    "name": "紅水晶(中)",
+    "path": "texture/FlyingAnt",
+    "price": 100,
+    "description": "增加血量 10",
+    "hit_point": 5,
     "attack_point": 0,
     "recovery": 0
   }
   {
     "id": 5,
-    "name": "Power Up",
+    "name": "恢復水晶(中)",
     "path": "texture/FlyingAnt",
-    "price": 20,
-    "description": "It can make your attack value up.",
+    "price": 100,
+    "description": "增加恢復力 2",
     "hit_point": 0,
     "attack_point": 0,
-    "recovery": 0
+    "recovery": 2
   }
   {
     "id": 6,
-    "name": "Power Up",
+    "name": "短劍",
     "path": "texture/FlyingAnt",
-    "price": 20,
-    "description": "It can make your attack value up.",
+    "price": 100,
+    "description": "增加攻擊力:15",
+    "hit_point": 0,
+    "attack_point": 15,
+    "recovery": 0
+  },
+    {
+    "id": 7,
+    "name": "技能書:衝刺(左)",
+    "path": "texture/YellowStar",
+    "price":  200,
+    "description": "向左方衝刺(裝備數量增加會提升衝刺速度)",
+       "hit_point": 0,
+    "attack_point": 0,
+    "recovery": 0
+  },
+  {
+    "id": 8,
+    "name": "技能書:衝刺(右)",
+    "path": "texture/YellowStar",
+    "price": 200,
+    "description": "向右方衝刺(裝備數量增加會提升衝刺速度)",
+    "hit_point": 0,
+    "attack_point": 0,
+    "recovery": 0
+  }  ,
+  {
+    "id": 9,
+    "name": "技能書:衝刺(上)",
+    "path": "texture/YellowStar",
+    "price": 200,
+    "description": "向上方衝刺(裝備數量增加會提升衝刺速度)",
     "hit_point": 0,
     "attack_point": 0,
     "recovery": 0
   }
-   {
-    "id": 7,
-    "name": "Power Up",
-    "path": "texture/FlyingAnt",
-    "price":  20,
-    "description": "It can make your attack value up.",
+  ,
+    {
+    "id": 10,
+    "name": "技能書:衝刺(下)",
+    "path": "texture/YellowStar",
+    "price":  200,
+    "description": "向下方衝刺(裝備數量增加會提升衝刺速度)",
        "hit_point": 0,
     "attack_point": 0,
     "recovery": 0

@@ -6,7 +6,7 @@ using SimpleJSON;
 public class ShopItem : MonoBehaviour {
 
     public Slider _amountSlider;
-    public Text _amountText, _totalPriceText;
+    public Text _amountText, _totalPriceText,_money;
     int _amount = 0, _price = 1, _totalPrice;
 
     public HeroData3 _heroData;
@@ -39,13 +39,15 @@ public class ShopItem : MonoBehaviour {
     void Update()
     {
         _amount = (int)_amountSlider.value;
-        _amountText.text = _amount.ToString();
+       // _amountText.text = "數量: "+_amount.ToString();
         _totalPrice = _amount * _price;
-        _totalPriceText.text = _totalPrice.ToString();
+        _totalPriceText.text = "總共: "+_totalPrice.ToString();
+        _money.text ="金錢: " +JSON.Parse(_heroData.getData())["money"].AsInt;
     }
     void PanelHeightController()
     {
-        int length = _itemSortQuan;
+        int length = JSON.Parse(_heroData.getList()).Count-1;
+        Debug.Log(length);
         if (length % 2 != 0)
         {
             length += 1;
@@ -57,6 +59,7 @@ public class ShopItem : MonoBehaviour {
         }
         RectTransform rt = GetComponent<RectTransform>();
         rt.sizeDelta = new Vector2(200, length * 100);
+ 
     }
 
     public void ShowItem()
@@ -114,7 +117,7 @@ public class ShopItem : MonoBehaviour {
         RefreshData();
         _amountSlider.value = 0;
         _amount = (int)_amountSlider.value;
-        _amountText.text = _amount.ToString();
+        //_amountText.text = "數量: " + _amount.ToString();
         _amountSlider.maxValue = JSON.Parse(_heroData.getData())["money"].AsInt / _price;
         _totalPrice = _amount * _price;
         _totalPriceText.text = _totalPrice.ToString();
