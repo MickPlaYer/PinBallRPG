@@ -31,7 +31,7 @@ public class PinBallTable : MonoBehaviour
         if (_debugLevel != 0)
         {
             PlayerPrefs.DeleteAll();
-            // PlayerPrefs.SetInt("current_level", _debugLevel);
+            PlayerPrefs.SetInt("current_level", _debugLevel);
         }
         _ballRD = _ball.GetComponent<Rigidbody2D>();
         _hero = new HeroData();
@@ -187,7 +187,7 @@ public class PinBallTable : MonoBehaviour
         _ball.transform.localScale *= 0.9f;
         if (_ball.transform.localScale.x < 0.01f)
             if (_levelPad.IsAllItemPicked)
-            {        
+            {
                 if (_isEnd)
                     return;
                 _levelPad.ShowSuccessPad();

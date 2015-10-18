@@ -30,6 +30,7 @@ GameObject:
   - 251: {fileID: 25169786}
   - 114: {fileID: 11424222}
   - 82: {fileID: 8201530}
+  - 114: {fileID: 11428662}
   m_Layer: 0
   m_Name: Buffer
   m_TagString: Untagged
@@ -173,6 +174,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _value: 20
+--- !u!114 &11428662
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d739a053514017c4aa52ad4974879b9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11466938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _value: 20
+  _createAudioSouce: 1
 --- !u!212 &21239290
 SpriteRenderer:
   m_ObjectHideFlags: 1

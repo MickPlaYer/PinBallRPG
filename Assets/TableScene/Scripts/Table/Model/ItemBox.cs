@@ -14,7 +14,6 @@ public class ItemBox
         TextAsset default_item_box = Resources.Load(DEFAULT_BOX) as TextAsset;
         // Get string from PlayerPrefs
         string itemBox = PlayerPrefs.GetString(ITEM_BOX_KEY, default_item_box.text);
-        Debug.Log(itemBox);
         var data = JSON.Parse(itemBox);
         // Transfer data to list
         for (int i = 0; i < data.Count; i++)
@@ -50,6 +49,5 @@ public class ItemBox
         }
         // Save data to PlayerPrefs
         PlayerPrefs.SetString(ITEM_BOX_KEY, data.ToString());
-        Debug.Log(data.ToString());
     }
 }
