@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using SimpleJSON;
 
 public class EquipButton : MonoBehaviour {
     public int _state=0;
@@ -20,6 +21,7 @@ public class EquipButton : MonoBehaviour {
         switch(_state)
         {
             case 0:
+               
                 _IC.Equip();
                 break;
             case 1:

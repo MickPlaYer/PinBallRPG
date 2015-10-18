@@ -10,8 +10,9 @@ public class GameStart : MonoBehaviour {
     float _bAtk=0, _bHp=0, _bRe=0;
     string hero;
     // Use this for initialization
-    void Start () {
+    public void Start () {
         _levelSelect.maxValue = _heroData.getMaxLevel();
+        _levelSelect.value = _levelSelect.maxValue;
          hero = PlayerPrefs.GetString("battle_value", _heroData.getData());
        
         setValue();

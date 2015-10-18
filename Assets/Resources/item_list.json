@@ -43,6 +43,36 @@
     "id": 4,
     "name": "Power Up",
     "path": "texture/FlyingAnt",
+    "price": 20,
+    "description": "It can make your attack value up.",
+    "hit_point": 0,
+    "attack_point": 0,
+    "recovery": 0
+  }
+  {
+    "id": 5,
+    "name": "Power Up",
+    "path": "texture/FlyingAnt",
+    "price": 20,
+    "description": "It can make your attack value up.",
+    "hit_point": 0,
+    "attack_point": 0,
+    "recovery": 0
+  }
+  {
+    "id": 6,
+    "name": "Power Up",
+    "path": "texture/FlyingAnt",
+    "price": 20,
+    "description": "It can make your attack value up.",
+    "hit_point": 0,
+    "attack_point": 0,
+    "recovery": 0
+  }
+   {
+    "id": 7,
+    "name": "Power Up",
+    "path": "texture/FlyingAnt",
     "price":  20,
     "description": "It can make your attack value up.",
        "hit_point": 0,

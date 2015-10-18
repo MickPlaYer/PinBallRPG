@@ -14,8 +14,9 @@ public class HeroData3 : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        DontDestroyOnLoad(transform.gameObject);
+        //DontDestroyOnLoad(transform.gameObject);
         ReLoad();
+        //PlayerPrefs.SetString("_item_list", Resources.Load<TextAsset>("item_list").text);
 
         var box = JSON.Parse(_item_box);
         var list = JSON.Parse(_item_list);
@@ -85,8 +86,11 @@ public class HeroData3 : MonoBehaviour {
         }
         if (!hasItem)
         {
-            string itemToAdd = "{  \"id\"  " + ":" + id + ", \"amount\" " + ":" + amount + "}";
-            equ.Add(JSON.Parse(itemToAdd));
+            if (JSON.Parse(PlayerPrefs.GetString("_equipment")).Count <6)
+            {
+                string itemToAdd = "{  \"id\"  " + ":" + id + ", \"amount\" " + ":" + amount + "}";
+                equ.Add(JSON.Parse(itemToAdd));
+            }
         }
 
         _equipment = equ.ToString();
@@ -223,7 +227,7 @@ public class HeroData3 : MonoBehaviour {
     public void ReLoad()
     {
         string default_box = Resources.Load<TextAsset>("default_item_box").text;
-        string default_list = Resources.Load<TextAsset>("item_list").text;
+        //string default_list = Resources.Load<TextAsset>("item_list").text;
         string default_hero_data = Resources.Load<TextAsset>("default_hero_data").text;
         string default_equipment = Resources.Load<TextAsset>("equipment").text;
         
@@ -233,7 +237,7 @@ public class HeroData3 : MonoBehaviour {
 
         _hero_data = PlayerPrefs.GetString("_hero_data", default_hero_data);
 
-        _item_list = PlayerPrefs.GetString("_item_list", default_list);
+        _item_list =  Resources.Load<TextAsset>("item_list").text;
         _equipment = PlayerPrefs.GetString("_equipment", default_equipment);
     }
 
@@ -241,14 +245,14 @@ public class HeroData3 : MonoBehaviour {
     {
         Debug.Log("done");
         string default_box = Resources.Load<TextAsset>("default_item_box").text;
-        string default_list = Resources.Load<TextAsset>("item_list").text;
+       // string default_list = Resources.Load<TextAsset>("item_list").text;
         string default_hero_data = Resources.Load<TextAsset>("default_hero_data").text;
         string default_equipment = Resources.Load<TextAsset>("equipment").text;
         PlayerPrefs.SetInt("current_level", 1);
         PlayerPrefs.SetInt("max_level", 1);
         PlayerPrefs.SetString("item_box", default_box);
         PlayerPrefs.SetString("_hero_data", default_hero_data);
-        PlayerPrefs.SetString("_item_list", default_list);
+        PlayerPrefs.SetString("_item_list", Resources.Load<TextAsset>("item_list").text);
         PlayerPrefs.SetString("_equipment", default_equipment);
          PlayerPrefs.SetString("battle_value", default_hero_data);
         ReLoad();

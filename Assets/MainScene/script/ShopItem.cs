@@ -30,6 +30,7 @@ public class ShopItem : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        Initialize();
         _itemToBuy.gameObject.SetActive(false);
         ShowItem();
         _amountSlider.maxValue = 0;
