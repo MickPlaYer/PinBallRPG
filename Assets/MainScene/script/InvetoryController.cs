@@ -72,11 +72,15 @@ public class InvetoryController : MonoBehaviour {
             {
                 if (_item_list[i]["id"].AsInt == _item_box[j]["id"].AsInt)
                 {
-                    //Debug.Log("item:" + _item_list[i]["name"] + "\n" + _item_box[j]["amount"]);
-                    GameObject item = (GameObject)Instantiate(_itemPref, Vector3.zero, Quaternion.identity);
-                    item.GetComponent<ItemProp>().Set(i, _item_box[j]["amount"].AsInt, Resources.Load<Sprite>(_item_list[i]["path"]) as Sprite,1);
-                    item.transform.parent = gameObject.transform;
-                    item.transform.localScale = new Vector3(1,1,1);
+                    if (_item_box[j]["amount"].AsInt != 0)
+                    {
+                        //Debug.Log("item:" + _item_list[i]["name"] + "\n" + _item_box[j]["amount"]);
+                        GameObject item = (GameObject)Instantiate(_itemPref, Vector3.zero, Quaternion.identity);
+                        item.GetComponent<ItemProp>().Set(i, _item_box[j]["amount"].AsInt, Resources.Load<Sprite>(_item_list[i]["path"]) as Sprite, 1);
+                        item.transform.parent = gameObject.transform;
+                        item.transform.localScale = new Vector3(1, 1, 1);
+                    }
+                    
                 }
 
             }
