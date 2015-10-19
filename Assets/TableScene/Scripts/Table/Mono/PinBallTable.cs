@@ -126,7 +126,7 @@ public class PinBallTable : MonoBehaviour
     private void ShutDownTable()
     {
         var OptionButton = GameObject.Find("OptionButton");
-            OptionButton.SetActive(false);
+        OptionButton.SetActive(false);
         var leftBuffer = GameObject.Find("BufferTriangleLeft/Buffer");
         if (leftBuffer != null)
             leftBuffer.SetActive(false);

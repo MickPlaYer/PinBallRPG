@@ -8,7 +8,6 @@ public class UIOptionPad : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Time.timeScale = 1f;
         RectTransform rect = GetComponent<RectTransform>();
         rect.anchoredPosition = Vector2.zero;
         gameObject.SetActive(false);
