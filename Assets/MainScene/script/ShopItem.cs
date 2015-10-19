@@ -104,6 +104,7 @@ public class ShopItem : MonoBehaviour {
         _amountSlider.maxValue = 0;
         _totalPriceText.text = "";
         _selectingId = 0;
+        _itemInfoText.text = "";
     }
 
     public void Buy()

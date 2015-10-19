@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class MenuButton : MonoBehaviour {
     public int _menuIndex = 2;
     public int _buttonNum;
-    public GameObject[] _panels = new GameObject[6];
+    public GameObject[] _panels = new GameObject[7];
     GameObject[] _thingsToTransform = new GameObject[10];
     int _temp = 0,_nextScene;
     float _time = 0;

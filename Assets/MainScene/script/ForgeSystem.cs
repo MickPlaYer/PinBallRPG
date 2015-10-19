@@ -4,7 +4,9 @@ using SimpleJSON;
 using UnityEngine.UI;
 public class ForgeSystem : MonoBehaviour {
     public HeroData3 _heroData;
-    public Image _target, _material1, _material2, _material3;
+    public Image[] _materia;
+    public Text[] _Need;
+    public Text[] _Own;
     string _list,_item_box;
     public Slider _slider;
     public GameObject _pref;
@@ -35,8 +37,13 @@ public class ForgeSystem : MonoBehaviour {
                 _heroData.takeFromBox(list[_selectedIndex]["material"][i]["id"].AsInt, (int)_slider.value* list[_selectedIndex]["material"][i]["amount"].AsInt);
             }
 
-            _heroData.putInBox(list[_selectedIndex]["id"].AsInt, _maxAmountToMake);
+            _heroData.putInBox(list[_selectedIndex]["id"].AsInt, (int)_slider.value);
         }
+
+        _list = PlayerPrefs.GetString("item_list", Resources.Load<TextAsset>("item_list").text);
+        _item_box = PlayerPrefs.GetString("item_box", Resources.Load<TextAsset>("default_item_box").text); 
+        ShowItem();
+        ShowMaterial();
     }
 
     public bool Manufacturable()
@@ -64,6 +71,7 @@ public class ForgeSystem : MonoBehaviour {
             _maxAmountToMake = 0;
         }
         _slider.value = 0;
+        ShowMaterial();
     }
 
     public void SetSliderMax()
@@ -85,6 +93,7 @@ public class ForgeSystem : MonoBehaviour {
                 {
                     if(box[j]["id"].AsInt== list[_selectedIndex]["material"][i]["id"].AsInt)
                     {
+
                         if (box[j]["amount"].AsInt > list[_selectedIndex]["material"][i]["amount"].AsInt)
                             amount = box[j]["amount"].AsInt / list[_selectedIndex]["material"][i]["amount"].AsInt;
                         else
@@ -121,11 +130,15 @@ public class ForgeSystem : MonoBehaviour {
     }
     public void Initialize()
     {
+        Awake();
         if(transform.childCount!=0)
         for (int i = 0; i < transform.childCount; i++)
         {
             Destroy(transform.GetChild(i).gameObject);
         }
+        _slider.value = 0;
+        _maxAmountToMake = Calculate();
+        MaterialIni();
     }
 
     void PanelHeightController()
@@ -147,7 +160,50 @@ public class ForgeSystem : MonoBehaviour {
 
     public void ShowMaterial()
     {
+        MaterialIni();
+        var list = JSON.Parse(_list);
+        var box = JSON.Parse(_item_box);
+        int materialInfo = 1;
+        for (int i = 0; i < list[_selectedIndex]["material"].Count; i++)
+        {
+            _materia[materialInfo].sprite = Resources.Load<Sprite>(list[list[_selectedIndex]["material"][i]["id"].AsInt]["path"]) as Sprite;
+            if (box.Count > 0)
+                for (int j = 0; j < box.Count; j++)
+                {
+                    if (box[j]["id"].AsInt == list[_selectedIndex]["id"].AsInt)
+                        _Own[0].text = (box[j]["amount"].AsInt).ToString();
+                        if (box[j]["id"].AsInt == list[_selectedIndex]["material"][i]["id"].AsInt)
+                    {
+                        _Own[materialInfo].text = (box[j]["amount"].AsInt).ToString();
+                        materialInfo++;
+                    }
+                }      
+        }
+        _materia[0].sprite = Resources.Load<Sprite>(list[_selectedIndex]["path"]) as Sprite;
+        _Need[0].text = ((int)_slider.value).ToString();
+        materialInfo = 1;
+        for (int i = 0; i < list[_selectedIndex]["material"].Count; i++)
+        {
+            int amount = (int)_slider.value;
+            _Need[materialInfo].text = (list[_selectedIndex]["material"][i]["amount"].AsInt * amount).ToString();
+            materialInfo++;
+        }
+    }
 
+    public void MaterialIni()
+    {
+        foreach (Image image in _materia)
+        {
+            image.sprite= Resources.Load<Sprite>("texture/ItemFrame") as Sprite;
+        }
+        foreach(Text T in _Need)
+        {
+            T.text = "";
+        }
+        foreach(Text T in _Own)
+        {
+            T.text = "";
+        }
     }
 
 }
