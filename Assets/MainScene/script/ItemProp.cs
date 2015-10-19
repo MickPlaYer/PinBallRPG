@@ -49,5 +49,11 @@ public class ItemProp : MonoBehaviour {
             transform.parent.GetComponent<ShowEquipItem>()._buttonText.text = "卸下";
             transform.parent.GetComponent<ShowEquipItem>()._EB._state = 1;
         }
+        else if (_state == 4)//forge
+        {
+     
+            transform.parent.GetComponent<ForgeSystem>().SetIndex(_itemIndex);
+
+        }
     }
 }

@@ -61,9 +61,49 @@ public class HeroData3 : MonoBehaviour {
         return _battleValue;
     }
 
-    public void setBox()
+    public void takeFromBox(int id,int amount)
     {
-        _item_box = _item_box + "";
+        var box = JSON.Parse(_item_box);
+        if (box.Count != 0)
+        {
+            for (int i = 0; i < box.Count; i++)
+            {
+                if (box[i]["id"].AsInt == id)
+                {
+                    box[i]["amount"] = (box[i]["amount"].AsInt - amount).ToString();
+                }
+            }
+
+        }
+        _item_box = box.ToString();
+        PlayerPrefs.SetString("item_box", _item_box);
+    }
+
+    public void putInBox(int id,int amount)
+    {
+        bool hasItem = false;
+        var box = JSON.Parse(_item_box);
+        if (box.Count != 0)
+        {
+            for (int i = 0; i < box.Count; i++)
+            {
+                if (box[i]["id"].AsInt == id)
+                {
+                    box[i]["amount"] = (box[i]["amount"].AsInt + amount).ToString();
+                    hasItem = true;
+                }
+            }
+
+        }
+
+        if (!hasItem)
+        {
+            string itemToAdd = "{  \"id\"  " + ":" + id + ", \"amount\" " + ":" + amount + "}";
+            box.Add(JSON.Parse(itemToAdd));
+        }
+
+        _item_box = box.ToString();
+        PlayerPrefs.SetString("item_box", _item_box);
     }
 
     public void setEqu(int id,int amount)
