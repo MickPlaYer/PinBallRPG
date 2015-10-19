@@ -42,12 +42,9 @@ public class Boss : MonoBehaviour
             itemAmount = LEVEL_RANGE;
         for (int i = 0; i < itemAmount; i++)
         {
-            int id = Random.Range(0, LEVEL_RANGE + 1);
+            int id = Random.Range(0, gameLevel + 1);
             if (id != 0)
-            {
-                id += levelFloor * 3;
                 _itemIDs.Add(id);
-            }
         }
     }
 

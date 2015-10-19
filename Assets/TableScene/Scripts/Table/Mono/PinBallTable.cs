@@ -108,6 +108,7 @@ public class PinBallTable : MonoBehaviour
             var itemBall = item.GetComponent<ItemBall>();
             itemBall.SetRelatedObject(_levelPad, _hole);
             itemBall.ID = id;
+            itemBall.GetComponent<SpriteRenderer>().color = _boss.GetComponent<SpriteRenderer>().color;
             _levelPad.AddItem(item);
         }
     }
