@@ -3,11 +3,12 @@ using System.Collections;
 
 public class ItemBall : MonoBehaviour
 {
+    private int _id;
     private UILevelPad _levelPad;
     private Hole _hole;
     private Rigidbody2D _rigidbody = null;
     private BoxCollider2D _collider = null;
-    private int _count = 0;
+    private int _timeCount = 0;
 
     // Use this for initialization
     void Start()
@@ -26,8 +27,8 @@ public class ItemBall : MonoBehaviour
     {
         if (_collider == null)
         {
-            _count++;
-            if (_count > 100)
+            _timeCount++;
+            if (_timeCount > 100)
             {
                 _collider = gameObject.AddComponent<BoxCollider2D>();
                 _collider.isTrigger = true;
@@ -38,7 +39,7 @@ public class ItemBall : MonoBehaviour
             Vector2 vector = _hole.transform.position - transform.position;
             if (vector.magnitude < 0.1f)
             {
-                _levelPad.PickItem(1, gameObject);
+                _levelPad.PickItem(_id, gameObject);
             }
         }
     }
@@ -48,5 +49,11 @@ public class ItemBall : MonoBehaviour
     {
         _levelPad = levelPad;
         _hole = hole;
+    }
+
+    public int ID
+    {
+        get { return _id; }
+        set { _id = value; }
     }
 }
