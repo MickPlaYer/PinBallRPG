@@ -29,4 +29,11 @@ public class UIOptionPad : MonoBehaviour
         Time.timeScale = 1f;
         gameObject.SetActive(false);
     }
+
+    // Close itself.
+    public void BackToTitle()
+    {
+        Time.timeScale = 1f;
+        Application.LoadLevel("MainScene");
+    }
 }

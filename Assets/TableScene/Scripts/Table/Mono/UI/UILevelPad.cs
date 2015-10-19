@@ -40,6 +40,7 @@ public class UILevelPad : MonoBehaviour
         _title.text = LEVEL_ + _gameLevel + FAIL_TITLE;
         _stay.text = FAIL_STAY;
         _exit.text = FAIL_EXIT;
+        _hpBar.gameObject.SetActive(false);
         gameObject.SetActive(true);
     }
 
@@ -94,7 +95,7 @@ public class UILevelPad : MonoBehaviour
     // Add up level count and save items into PlayerPrefs.
     private void SaveGameChanged()
     {
-        _itemBox.SaveItems();
+        _itemBox.SaveReward(_gameLevel);
         _gameLevel++;
         PlayerPrefs.SetInt(CURRENT_LEVEL_KEY, _gameLevel);
         PlayerPrefs.Save();

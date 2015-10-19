@@ -94,15 +94,22 @@ public class PinBallTable : MonoBehaviour
         PlaySound("BossDie");
         _boss.gameObject.SetActive(false);
         _hole.gameObject.SetActive(true);
+        MakeItemDrop();
+        _ballRD.AddForce((_ball.transform.position - _boss.transform.position) * 500, ForceMode2D.Force);
+    }
+
+    // Throw out all drop items.
+    private void MakeItemDrop()
+    {
         GameObject ojb = Resources.Load<GameObject>("Item");
-        // Create drop items
-        for (int i = 0; i < 50; i++)
+        foreach (int id in _boss.GetDropItems())
         {
             GameObject item = Instantiate(ojb);
-            item.GetComponent<ItemBall>().SetRelatedObject(_levelPad, _hole);
+            var itemBall = item.GetComponent<ItemBall>();
+            itemBall.SetRelatedObject(_levelPad, _hole);
+            itemBall.ID = id;
             _levelPad.AddItem(item);
         }
-        _ballRD.AddForce((_ball.transform.position - _boss.transform.position) * 500, ForceMode2D.Force);
     }
 
     // When Hero HP -> 0
@@ -110,12 +117,6 @@ public class PinBallTable : MonoBehaviour
     {
         if (_isEnd)
             return;
-        var left = GameObject.Find("BufferTriangleLeft/Buffer");
-        if (left != null)
-            left.SetActive(false);
-        var right = GameObject.Find("BufferTriangleRight/Buffer");
-        if (right != null)
-            right.SetActive(false);
         ShutDownTable();
         PlaySound("ShutDown");
         _isEnd = true;
@@ -124,6 +125,14 @@ public class PinBallTable : MonoBehaviour
     // Shut down the objects on the table.
     private void ShutDownTable()
     {
+        var OptionButton = GameObject.Find("OptionButton");
+            OptionButton.SetActive(false);
+        var leftBuffer = GameObject.Find("BufferTriangleLeft/Buffer");
+        if (leftBuffer != null)
+            leftBuffer.SetActive(false);
+        var rightBuffer = GameObject.Find("BufferTriangleRight/Buffer");
+        if (rightBuffer != null)
+            rightBuffer.SetActive(false);
         _controller[0]._buttonHeld = false;
         _controller[1]._buttonHeld = false;
         _barLeft.ShutDown();
