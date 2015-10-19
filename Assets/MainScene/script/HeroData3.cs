@@ -10,7 +10,7 @@ public class HeroData3 : MonoBehaviour {
     string _equipment;
     string _battleValue;
     int _currentLevel, _maxLevel=1;
-    public int _bAtk = 0, _bHp = 0, _bRe = 0,_bMa=0;
+    public int _bAtk = 0, _bHp = 0, _bRe = 0;
 
     // Use this for initialization
     void Start () {
@@ -108,7 +108,7 @@ public class HeroData3 : MonoBehaviour {
 
     public void setEqu(int id,int amount)
     {
-        bool hasItem = false;
+        bool hasItem = false,equip=false;
         var box = JSON.Parse(_item_box);
         var equ = JSON.Parse(_equipment);
         if (equ.Count != 0)
@@ -119,6 +119,7 @@ public class HeroData3 : MonoBehaviour {
                 {
                     equ[i]["amount"] = (equ[i]["amount"].AsInt + amount).ToString();
                     hasItem = true;
+                    equip = true;
                 }
             }
 
@@ -127,14 +128,15 @@ public class HeroData3 : MonoBehaviour {
         if (!hasItem)
         {
             if (JSON.Parse(PlayerPrefs.GetString("_equipment")).Count <6)
-            {
+            {                
                 string itemToAdd = "{  \"id\"  " + ":" + id + ", \"amount\" " + ":" + amount + "}";
                 equ.Add(JSON.Parse(itemToAdd));
+                equip = true;
             }
         }
 
         _equipment = equ.ToString();
-
+        if(equip)
         for (int i = 0; i < box.Count; i++)
         {
             if (box[i]["id"].AsInt == id)
@@ -198,7 +200,7 @@ public class HeroData3 : MonoBehaviour {
     public void setValue()
     {
 
-         _bAtk =  _bHp =  _bRe=_bMa = 0;
+         _bAtk =  _bHp =  _bRe = 0;
         var equ = JSON.Parse(_equipment);
         var list = JSON.Parse(_item_list);
         var data = JSON.Parse(_hero_data);
@@ -225,7 +227,6 @@ public class HeroData3 : MonoBehaviour {
 
         battleValue["attack_point"] = (data["attack_point"].AsInt + _bAtk).ToString();
         battleValue["recovery"] = (data["recovery"].AsInt + _bRe).ToString();
-        battleValue["mana"] = (data["mana"].AsInt + _bMa).ToString();
         battleValue["money"] = (data["money"].AsInt).ToString();
         _battleValue = battleValue.ToString();
         PlayerPrefs.SetString("battle_value", _battleValue);

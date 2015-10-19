@@ -6,7 +6,7 @@ using SimpleJSON;
 public class ShopItem : MonoBehaviour {
 
     public Slider _amountSlider;
-    public Text _amountText, _totalPriceText,_money;
+    public Text _amountText, _totalPriceText,_money,_singlePrice;
     int _amount = 0, _price = 1, _totalPrice;
 
     public HeroData3 _heroData;
@@ -41,7 +41,7 @@ public class ShopItem : MonoBehaviour {
         _amount = (int)_amountSlider.value;
        // _amountText.text = "數量: "+_amount.ToString();
         _totalPrice = _amount * _price;
-        _totalPriceText.text = "總共: "+_totalPrice.ToString();
+        _totalPriceText.text = _totalPrice.ToString();
         _money.text ="金錢: " +JSON.Parse(_heroData.getData())["money"].AsInt;
     }
     void PanelHeightController()
@@ -86,11 +86,12 @@ public class ShopItem : MonoBehaviour {
         _totalPriceText.text = "Price : "+_item_list[index]["price"].ToString();
         _selectingId = index;
          _price = _item_list[index]["price"].AsInt;
+        _singlePrice.text = _price.ToString();
         _amountSlider.maxValue = JSON.Parse(_heroData.getData())["money"].AsInt / _price;
         _itemToBuy.sprite = Resources.Load<Sprite>(_item_list[index]["path"]) as Sprite;
         _itemToBuy.gameObject.SetActive(true);
+        _amountSlider.value = 0;
        
-
     }
 
     public void Initialize()

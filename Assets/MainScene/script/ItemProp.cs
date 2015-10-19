@@ -6,17 +6,19 @@ public class ItemProp : MonoBehaviour {
     public int _itemIndex;
     public Text _amount;
     int _itemAmount,_state;
-
+    GameObject _selectFrame;
+    public bool _onSelected = false;
 	// Use this for initialization
 	void Start () {
-       
-	}
+        _selectFrame = GameObject.FindGameObjectWithTag("selectFrame");
+    }
 	
 	// Update is called once per frame
 	void Update () {
+        if(_onSelected)
+            _selectFrame.transform.position = transform.position;
 
-       
-	}
+    }
 
     public void Set(int index,int amount,Sprite image,int state)
     {
@@ -55,5 +57,17 @@ public class ItemProp : MonoBehaviour {
             transform.parent.GetComponent<ForgeSystem>().SetIndex(_itemIndex);
 
         }
+        setSelectFrameDefault();
+        _onSelected = true;
+        _selectFrame.transform.position = transform.position;
+    }
+
+    public void setSelectFrameDefault()
+    {
+        foreach(GameObject GO in GameObject.FindGameObjectsWithTag("item"))
+        {
+            GO.GetComponent<ItemProp>()._onSelected = false;
+        }
+        _selectFrame.transform.position = new Vector3(-100, -300, 0);
     }
 }

@@ -37,7 +37,7 @@ public class MenuButton : MonoBehaviour {
             while (_time > 0.1f && _temp< _nowScene.GetComponent<ThingToTransform>()._thingsToTransform.Length)
             {
                 _tempTrans[_temp] = (GameObject)Instantiate( _thingsToTransform[_temp], _thingsToTransform[_temp].transform.position, _thingsToTransform[_temp].transform.rotation);
-                _tempTrans[_temp].transform.parent = _nowScene.transform;
+                _tempTrans[_temp].transform.SetParent( _nowScene.transform);
                 _thingsToTransform[_temp].SetActive(false);
                 _time = 0;
                 _temp++;

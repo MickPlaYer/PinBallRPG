@@ -10,7 +10,7 @@ public class InvetoryController : MonoBehaviour {
     public GameObject _itemPref;
     public GameObject _parent;
     public CanvasFixed _canvasFixed;
-    public Text _itemInfoText;
+    public Text _itemInfoText,_itemName;
     public ShowEquipItem _SEI;
     int _selectingItemId = 0,_amount=0;
 
@@ -77,7 +77,7 @@ public class InvetoryController : MonoBehaviour {
                         //Debug.Log("item:" + _item_list[i]["name"] + "\n" + _item_box[j]["amount"]);
                         GameObject item = (GameObject)Instantiate(_itemPref, Vector3.zero, Quaternion.identity);
                         item.GetComponent<ItemProp>().Set(i, _item_box[j]["amount"].AsInt, Resources.Load<Sprite>(_item_list[i]["path"]) as Sprite, 1);
-                        item.transform.parent = gameObject.transform;
+                        item.transform.SetParent( gameObject.transform);
                         item.transform.localScale = new Vector3(1, 1, 1);
                     }
                     
@@ -92,6 +92,7 @@ public class InvetoryController : MonoBehaviour {
 
 public void OnItemPressed(int index)
     {
+        _itemName.text= _item_list[index]["name"].ToString();
         _itemInfoText.text = _item_list[index]["description"].ToString();
         _selectingItemId = index;
 

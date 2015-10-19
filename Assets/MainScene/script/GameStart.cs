@@ -29,4 +29,8 @@ public class GameStart : MonoBehaviour {
         _heroData.setValue();    
     }
 
+    public void initialSlider()
+    {
+        _levelSelect.value = 1;
+    }
 }

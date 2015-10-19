@@ -77,7 +77,7 @@
     "name": "斧頭",
     "path": "texture/Weapons_Axe",
     "price": 150,
-    "description": "增加攻擊力:20",
+    "description": "增加攻擊力 20",
      "manufacturable": 1,
     "material": [{ "id": 3,"amount":3 }],
     "hit_point": 0,

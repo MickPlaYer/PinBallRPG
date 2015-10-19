@@ -39,8 +39,7 @@ public class ItemController : MonoBehaviour {
                         Debug.Log("before: " + _equipment[i]["id"].AsInt);
                         Debug.Log("before: " + _item_list[j]["path"]);
                         _items[_index].GetComponent<Items>().Set(_index, _equipment[i]["id"].AsInt, Resources.Load<Sprite>(_item_list[j]["path"]) as Sprite);
-                        
-                        _items[_index].transform.parent.gameObject.SetActive(true);
+                        _items[_index].SetActive(true);
                         _index++;
                         Debug.Log(_index);
                       

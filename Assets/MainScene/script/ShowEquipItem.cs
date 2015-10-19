@@ -10,7 +10,7 @@ public class ShowEquipItem : MonoBehaviour {
     public GameObject _itemPref;
     public GameObject _parent;
     public CanvasFixed _canvasFixed;
-    public Text _itemInfoText;
+    public Text _itemInfoText, _itemName;
     public InvetoryController _IC;
     int _selectingItemId = 0, _amount = 0;
     JSONNode _heroInfo;
@@ -65,7 +65,7 @@ public class ShowEquipItem : MonoBehaviour {
                     //Debug.Log("item:" + _item_list[i]["name"] + "\n" + _item_box[j]["amount"]);
                     GameObject item = (GameObject)Instantiate(_itemPref, Vector3.zero, Quaternion.identity);
                     item.GetComponent<ItemProp>().Set(i, _equipment[j]["amount"].AsInt, Resources.Load<Sprite>(_item_list[i]["path"]) as Sprite, 3);
-                    item.transform.parent = gameObject.transform;
+                    item.transform.SetParent( gameObject.transform);
                     item.transform.localScale = new Vector3(1, 1, 1);
                 }
 
@@ -78,6 +78,7 @@ public class ShowEquipItem : MonoBehaviour {
 
     public void OnItemPressed(int index)
     {
+        _itemName.text = _item_list[index]["name"].ToString();
         _itemInfoText.text = _item_list[index]["description"].ToString();
         _selectingItemId = index;
 

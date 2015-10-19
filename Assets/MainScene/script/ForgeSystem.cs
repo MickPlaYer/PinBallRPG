@@ -121,7 +121,7 @@ public class ForgeSystem : MonoBehaviour {
                 //Debug.Log("item:" + _item_list[i]["name"] + "\n" + _item_box[j]["amount"]);
                 GameObject item = (GameObject)Instantiate(_pref, Vector3.zero, Quaternion.identity);
                     item.GetComponent<ItemProp>().Set(i,0, Resources.Load<Sprite>(_item_list[i]["path"]) as Sprite, 4);
-                    item.transform.parent = gameObject.transform;
+                    item.transform.SetParent(gameObject.transform);
                     item.transform.localScale = new Vector3(1, 1, 1);
                 }
 

@@ -57,15 +57,27 @@ public class PinBallTable : MonoBehaviour
     // When hero is attack the boss.
     public void Bang(float speed)
     {
-        PlaySound("Bang");
         int damage = GetHeroAttackDamage(speed);
-        _boss.HP -= damage;
-        _hero.HP -= _boss.ATK;
+        HurtHero((int)_boss.ATK);
+        HurtBoss(damage);
+    }
+
+    // Hurt the hero.
+    public void HurtHero(int damage)
+    {
+        _hero.HP -= damage;
         if (_hero.HP <= 0)
             OnHeroDead();
+    }
+
+    // Hurt the Boss.
+    public void HurtBoss(int damage)
+    {
+        PlaySound("Bang");
+        FlyANumber(_boss.transform.position, damage);
+        _boss.HP -= damage;
         if (_boss.HP <= 0)
             OnBossDead();
-        FlyANumber(_boss.transform.position, damage);
     }
 
     // Get hero's attack damage by speed and combo.
@@ -102,13 +114,13 @@ public class PinBallTable : MonoBehaviour
     private void MakeItemDrop()
     {
         GameObject ojb = Resources.Load<GameObject>("Item");
+        ojb.GetComponent<SpriteRenderer>().color = _boss.GetComponent<SpriteRenderer>().color;
         foreach (int id in _boss.GetDropItems())
         {
             GameObject item = Instantiate(ojb);
             var itemBall = item.GetComponent<ItemBall>();
             itemBall.SetRelatedObject(_levelPad, _hole);
             itemBall.ID = id;
-            itemBall.GetComponent<SpriteRenderer>().color = _boss.GetComponent<SpriteRenderer>().color;
             _levelPad.AddItem(item);
         }
     }
@@ -243,6 +255,10 @@ public class PinBallTable : MonoBehaviour
             _barRight.GoUp(KeyCode.D);
         if (Input.GetKey(KeyCode.Escape))
             _levelPad.LoadMenuScene();
+        if (Input.GetKeyDown(KeyCode.Q))
+            GameObject.Find("Dash").GetComponent<Dash>().Cast(Vector2.left);
+        if (Input.GetKeyDown(KeyCode.W))
+            GameObject.Find("Shoot").GetComponent<Shoot>().Cast(100);
     }
 
     // Load sounds into hash table.

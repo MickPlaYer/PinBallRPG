@@ -5,7 +5,7 @@ using System.Collections;
 public class ItemCast : MonoBehaviour {
     public HeroData3 _heroData;
     public CDController [] _a ;
- 
+    public GameObject[] _mask;
     // Use this for initialization
     void Start () {        
     }
@@ -21,14 +21,17 @@ public class ItemCast : MonoBehaviour {
         {
             case 1:
                 _a[index].SetCD(2f);
+                _a[index].SetMask(_mask[index]);
                 break;
 
             case 2:
                 _a[index].SetCD(1f);
+                _a[index].SetMask(_mask[index]);
                 break;
 
             case 3:
                 _a[index].SetCD(1);
+                _a[index].SetMask(_mask[index]);
                 break;
 
         }
