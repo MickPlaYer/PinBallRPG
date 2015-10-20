@@ -76,10 +76,8 @@ public class ComboBox : MonoBehaviour
                 _comboRenderer.sprite = _combo[0];
                 _numberRenderer.sprite = _numbers[_comboNumber];
             }
-        }
-        else
-        {
-            ShowMaxCombo();
+            if (_comboNumber == 10)
+                ShowMaxCombo();
         }
     }
 

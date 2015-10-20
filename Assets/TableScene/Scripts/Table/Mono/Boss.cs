@@ -62,6 +62,15 @@ public class Boss : MonoBehaviour
         return _itemIDs.ToArray();
     }
 
+    // Get the boss's color.
+    public Color GetColor(bool isWithAlpha)
+    {
+        Color color = _color;
+        if (!isWithAlpha)
+            color.a = 1f;
+        return color;
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Hit by hero(ball).
