@@ -7,7 +7,7 @@ public class SkillController : MonoBehaviour {
     string _equipment;
 	// Use this for initialization
 	void Start () {
-        _equipment = PlayerPrefs.GetString("_equipment", "");
+        _equipment = PlayerPrefs.GetString("_equipment");
 
         _magicArrow.gameObject.SetActive(false);
         SetSkill();

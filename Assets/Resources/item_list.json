@@ -208,7 +208,7 @@
     "name": "神奇的獎盃",
     "path": "texture/Rewards_Cup",
     "price": 1000,
-    "description": "增加血攻擊力80 \n 增加血量 80",
+    "description": "增加攻擊力80 ,增加血量 80",
     "manufacturable": 1,
     "material": [
       {
