@@ -26,6 +26,7 @@ public class ItemController : MonoBehaviour {
 
     public void Set()
     {
+    
         _index = 0;
         if (_equipment.Count != 0)
         {

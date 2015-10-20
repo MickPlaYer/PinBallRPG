@@ -21,17 +21,15 @@ public class ItemCast : MonoBehaviour {
         {
             case 1:
                 _a[index].SetCD(2f);
-                _a[index].SetMask(_mask[index]);
                 break;
 
             case 2:
                 _a[index].SetCD(1f);
-                _a[index].SetMask(_mask[index]);
                 break;
 
             case 3:
                 _a[index].SetCD(1);
-                _a[index].SetMask(_mask[index]);
+ 
                 break;
 
         }
@@ -41,7 +39,7 @@ public class ItemCast : MonoBehaviour {
 
     public void Cast(int id,int index)
     {
-       Debug.Log(_a[index]._coldTime) ;
+       //Debug.Log(_a[index]._coldTime) ;
         if (!_a[index]._trigger)
         {
             switch (id)
