@@ -6,11 +6,11 @@ public class UILevelPad : MonoBehaviour
 {
     private const string CURRENT_LEVEL_KEY = "current_level";
     private const string LEVEL_ = "關卡 ";
-    private const string FAIL_STAY = "再試\n一次";
-    private const string FAIL_EXIT = "回到\n選單";
+    private const string FAIL_STAY = "再試一次";
+    private const string FAIL_EXIT = "回到選單";
     private const string FAIL_TITLE = " 失敗！";
-    private const string CLEAR_STAY = "到下\n一關";
-    private const string CLEAR_EXIT = "回到\n選單";
+    private const string CLEAR_STAY = "到下一關";
+    private const string CLEAR_EXIT = "回到選單";
     private const string CLEAR_TITLE = " 通過！";
     private ItemBox _itemBox;
     private ItemList _itemList;
@@ -20,6 +20,7 @@ public class UILevelPad : MonoBehaviour
     public Text _title;
     public Text _stay;
     public Text _exit;
+    public RewardPad _rewardPad;
 
     // Use this for initialization
     void Start()
@@ -50,11 +51,16 @@ public class UILevelPad : MonoBehaviour
     {
         if (gameObject.activeSelf)
             return;
+        SaveGameChanged();
         // Set texts.
         _title.text = LEVEL_ + _gameLevel + CLEAR_TITLE;
         _stay.text = CLEAR_STAY;
         _exit.text = CLEAR_EXIT;
-        SaveGameChanged();
+        foreach (int id in _pickedIDList)
+        {
+            Sprite sprite = _itemList.GetSprite(id);
+            _rewardPad.AddItemImage(sprite);
+        }
         // Hide hp bar and make cover into black.
         _hpBar.Scale = 0f;
         _hpBar.gameObject.SetActive(false);
