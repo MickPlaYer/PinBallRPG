@@ -6,7 +6,7 @@ public class ForgeSystem : MonoBehaviour {
     public HeroData3 _heroData;
     public Image[] _materia;
     public Text[] _Need;
-    public Text[] _Own;
+    public Text[] _Own,_name;
     string _list,_item_box;
     public Slider _slider;
     public GameObject _pref;
@@ -166,6 +166,7 @@ public class ForgeSystem : MonoBehaviour {
         int materialInfo = 1;
         for (int i = 0; i < list[_selectedIndex]["material"].Count; i++)
         {
+            _name[materialInfo].text= list[list[_selectedIndex]["material"][i]["id"].AsInt]["name"].ToString().Replace("\"", "");
             _materia[materialInfo].sprite = Resources.Load<Sprite>(list[list[_selectedIndex]["material"][i]["id"].AsInt]["path"]) as Sprite;
             if (box.Count > 0)
                 for (int j = 0; j < box.Count; j++)
@@ -179,6 +180,7 @@ public class ForgeSystem : MonoBehaviour {
                     }
                 }      
         }
+        _name[0].text = list[_selectedIndex]["name"].ToString().Replace("\"", "");
         _materia[0].sprite = Resources.Load<Sprite>(list[_selectedIndex]["path"]) as Sprite;
         _Need[0].text = ((int)_slider.value).ToString();
         materialInfo = 1;

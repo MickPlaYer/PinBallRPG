@@ -78,8 +78,8 @@ public class ShowEquipItem : MonoBehaviour {
 
     public void OnItemPressed(int index)
     {
-        _itemName.text = _item_list[index]["name"].ToString();
-        _itemInfoText.text = _item_list[index]["description"].ToString();
+        _itemName.text = _item_list[index]["name"].ToString().Replace("\"", "");
+        _itemInfoText.text = _item_list[index]["description"].ToString().Replace("\"", "");
         _selectingItemId = index;
 
         for (int i = 0; i < _equipment.Count; i++)

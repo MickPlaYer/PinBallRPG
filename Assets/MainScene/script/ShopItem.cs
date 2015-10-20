@@ -82,8 +82,8 @@ public class ShopItem : MonoBehaviour {
 
     public void OnItemPressed(int index)
     {
-        _itemInfoText.text = _item_list[index]["description"].ToString();
-        _totalPriceText.text = "Price : "+_item_list[index]["price"].ToString();
+        _itemInfoText.text = _item_list[index]["description"].ToString().Replace("\"", "");
+        _totalPriceText.text = "Price : "+_item_list[index]["price"].ToString().Replace("\"", "");
         _selectingId = index;
          _price = _item_list[index]["price"].AsInt;
         _singlePrice.text = _price.ToString();
