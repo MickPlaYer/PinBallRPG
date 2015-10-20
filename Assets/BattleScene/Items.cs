@@ -21,7 +21,7 @@ public class Items : MonoBehaviour {
     {
         _itemIndex = index;
         _id = id;
-        _IC.SetAbilityCD(id, index);
+        _IC.SetAbilityCD(id, index,gameObject);
         gameObject.transform.GetComponent<Image>().sprite = image;
     }
 
