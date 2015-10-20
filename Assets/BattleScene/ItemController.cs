@@ -13,9 +13,13 @@ public class ItemController : MonoBehaviour {
     void Start () {
         //GameObject g = GameObject.FindGameObjectWithTag("HeroData") as GameObject;
         //_heroData = g.GetComponent<HeroData3>();
+        foreach(GameObject IT in _items)
+        {
+            IT.SetActive(false);
+        }
         _item_list = JSON.Parse(PlayerPrefs.GetString("_item_list", Resources.Load<TextAsset>("item_list").text));
         _equipment = JSON.Parse(PlayerPrefs.GetString("_equipment", Resources.Load<TextAsset>("equipment").text));
-        Debug.Log("list:  " + _item_list.ToString());
+        //Debug.Log("list:  " + _item_list.ToString());
         Set();
     }
 	
