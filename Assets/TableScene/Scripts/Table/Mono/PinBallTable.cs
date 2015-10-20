@@ -114,7 +114,7 @@ public class PinBallTable : MonoBehaviour
     private void MakeItemDrop()
     {
         GameObject ojb = Resources.Load<GameObject>("Item");
-        ojb.GetComponent<SpriteRenderer>().color = _boss.GetComponent<SpriteRenderer>().color;
+        ojb.GetComponent<SpriteRenderer>().color = _boss.GetColor(false);
         foreach (int id in _boss.GetDropItems())
         {
             GameObject item = Instantiate(ojb);
@@ -257,6 +257,8 @@ public class PinBallTable : MonoBehaviour
             _levelPad.LoadMenuScene();
         if (Input.GetKeyDown(KeyCode.Q))
             GameObject.Find("Dash").GetComponent<Dash>().Cast(Vector2.left);
+        if (Input.GetKeyDown(KeyCode.E))
+            GameObject.Find("Dash").GetComponent<Dash>().Cast(Vector2.right);
         if (Input.GetKeyDown(KeyCode.W))
             GameObject.Find("Shoot").GetComponent<Shoot>().Cast(100);
     }
