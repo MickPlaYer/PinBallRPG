@@ -136,15 +136,22 @@ public class PinBallTable : MonoBehaviour
     // Shut down the objects on the table.
     private void ShutDownTable()
     {
-        var OptionButton = GameObject.Find("OptionButton");
-        if (OptionButton != null)
-            OptionButton.SetActive(false);
+        // TODO fix with loop.
+        var optionButton = GameObject.Find("OptionButton");
+        if (optionButton != null)
+            optionButton.SetActive(false);
         var leftBuffer = GameObject.Find("BufferTriangleLeft/Buffer");
         if (leftBuffer != null)
             leftBuffer.SetActive(false);
         var rightBuffer = GameObject.Find("BufferTriangleRight/Buffer");
         if (rightBuffer != null)
             rightBuffer.SetActive(false);
+        var leftDash = GameObject.Find("LeftDash");
+        if (leftDash != null)
+            leftDash.SetActive(false);
+        var rightDash = GameObject.Find("RightDash");
+        if (rightDash != null)
+            rightDash.SetActive(false);
         _controller[0]._buttonHeld = false;
         _controller[1]._buttonHeld = false;
         _barLeft.ShutDown();

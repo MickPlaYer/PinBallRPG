@@ -27,7 +27,7 @@ class ItemList
             int id = _itemList[i]["id"].AsInt;
             if (id > _maxID)
                 _maxID = id;
-            Sprite sprite = Resources.Load(_itemList[i]["path"]) as Sprite;
+            Sprite sprite = Resources.Load<Sprite>(_itemList[i]["path"]) as Sprite;
             _itemSprites.Add(id, sprite);
         }
     }

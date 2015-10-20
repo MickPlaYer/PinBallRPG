@@ -13,14 +13,15 @@ public class UILevelShow : MonoBehaviour
     private bool _isAtMiddle = false;
     private float _waitCount = 0f;
     private AudioSource[] _audios;
-    private GameObject _optionButton;
+    public GameObject _optionButton;
+    public GameObject[] _hideObjects;
 
     // Use this for initialization
     void Start()
     {
         _audios = GetComponents<AudioSource>();
-        _optionButton = GameObject.Find("OptionButton");
-        _optionButton.SetActive(false);
+        foreach (var obj in _hideObjects)
+            obj.SetActive(false);
         Time.timeScale = 0f;
         int gameLevel = PlayerPrefs.GetInt(CURRENT_LEVEL_KEY, 1);
         _text.text = "關卡 " + gameLevel;
@@ -64,7 +65,8 @@ public class UILevelShow : MonoBehaviour
         if (_waitCount >= WAIT_TIME)
         {
             _audios[1].Play();
-            _optionButton.SetActive(true);
+            foreach (var obj in _hideObjects)
+                obj.SetActive(true);
             Time.timeScale = 1f;
         }
     }
