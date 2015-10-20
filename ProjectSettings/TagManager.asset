@@ -8,6 +8,10 @@ TagManager:
   - item
   - Wall
   - Projectile
+  - HeroData
+  - Boss
+  - Ball
+  - Skill
   layers:
   - Default
   - TransparentFX

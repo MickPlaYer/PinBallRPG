@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         _rigidbody.angularVelocity = 500;
-        _rigidbody.velocity = _direction *= 5;
+        _rigidbody.velocity = _direction *= 10;
     }
 
     // Update is called once per frame
