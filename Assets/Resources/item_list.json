@@ -106,7 +106,7 @@
     "name": "恢復水晶(中)",
     "path": "texture/GreenCrystal",
     "price": 150,
-    "description": "增加恢復力 2",
+    "description": "增加恢復力 2 。 帶有一點魔法(初階魔法箭)",
     "manufacturable": 1,
     "material": [
       {
@@ -178,7 +178,7 @@
     "name": "材料: 胡蘿蔔",
     "path": "texture/Inventory_Carrot",
     "price": 500,
-    "description": "沒甚麼功能，用來合成",
+    "description": "沒什麼功能，用來合成",
     "manufacturable": 0,
     "material": [ ],
     "hit_point": 0,
@@ -208,7 +208,7 @@
     "name": "神奇的獎盃",
     "path": "texture/Rewards_Cup",
     "price": 1000,
-    "description": "增加血攻擊力80 \n 增加血量 80",
+    "description": "增加攻擊力80 ,增加血量 80",
     "manufacturable": 1,
     "material": [
       {

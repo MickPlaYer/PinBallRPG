@@ -6,22 +6,25 @@ public class ItemProp : MonoBehaviour {
     public int _itemIndex;
     public Text _amount;
     int _itemAmount,_state;
-    GameObject _selectFrame;
+    public GameObject _selectFrame;
     public bool _onSelected = false;
 	// Use this for initialization
 	void Start () {
-        _selectFrame = GameObject.FindGameObjectWithTag("selectFrame");
+        //_selectFrame =Instantiate( GameObject.FindGameObjectWithTag("selectFrame"),transform.position,transform.rotation) as GameObject;
+
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if(_onSelected)
-            _selectFrame.transform.position = transform.position;
+       // if(_onSelected)
+            //_selectFrame.transform.position = transform.position;
 
     }
 
     public void Set(int index,int amount,Sprite image,int state)
     {
+        _selectFrame.SetActive(false);
+        Start();
         _state = state;
         _itemIndex = index;
         _itemAmount = amount;
@@ -59,16 +62,17 @@ public class ItemProp : MonoBehaviour {
         }
         setSelectFrameDefault();
         _onSelected = true;
-        _selectFrame.transform.position = transform.position;
-        _selectFrame.transform.SetParent(transform.parent.parent);
+        _selectFrame.SetActive(true);
     }
 
     public void setSelectFrameDefault()
     {
-        foreach(GameObject GO in GameObject.FindGameObjectsWithTag("item"))
+       
+        foreach (GameObject GO in GameObject.FindGameObjectsWithTag("item"))
         {
             GO.GetComponent<ItemProp>()._onSelected = false;
+            GO.GetComponent<ItemProp>()._selectFrame.SetActive(false);
         }
-        _selectFrame.transform.position = new Vector3(-100, -300, 0);
+       
     }
 }

@@ -16,7 +16,7 @@ public class Hole : MonoBehaviour
     // Make attraction
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Projectile")
+        if (other.tag == "Projectile" || other.tag == "Skill")
             return;
         Vector2 vector = transform.position - other.transform.position;
         float delta = vector.magnitude;
