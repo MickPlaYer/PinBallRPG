@@ -47,20 +47,17 @@ public class Boss : MonoBehaviour
     private void PrepareDropItems(int gameLevel)
     {
         int levelFloor = (gameLevel - 1) / LEVEL_RANGE + 1;
-        Debug.Log("levelFloor: " + levelFloor);
         int itemAmount = gameLevel % LEVEL_RANGE;
         if (itemAmount == 0)
             itemAmount = LEVEL_RANGE;
         for (int i = 0; i < itemAmount; i++)
         {
             int id = Random.Range(0, levelFloor + 1);
-            Debug.Log("id = Random.Range: " + id);
             if (id != 0)
                 _itemIDs.Add(id);
             if (id > _levelPad.MaxItemID)
                 id = _levelPad.MaxItemID;
         }
-        Debug.Log(DropItemsCount);
     }
 
     // Get the boss's color.

@@ -17,7 +17,7 @@ public class ItemController : MonoBehaviour {
         {
             IT.SetActive(false);
         }
-        _item_list = JSON.Parse(PlayerPrefs.GetString("_item_list", Resources.Load<TextAsset>("item_list").text));
+        _item_list = JSON.Parse( Resources.Load<TextAsset>("item_list").ToString());
         _equipment = JSON.Parse(PlayerPrefs.GetString("_equipment", Resources.Load<TextAsset>("equipment").text));
         //Debug.Log("list:  " + _item_list.ToString());
         Set();

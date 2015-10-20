@@ -3,6 +3,8 @@ using System.Collections;
 
 
 public class ItemCast : MonoBehaviour {
+    public Dash _dash;
+    public Shoot _shoot;
     public HeroData3 _heroData;
     public CDController [] _a ;
     public GameObject[] _mask;
@@ -15,7 +17,7 @@ public class ItemCast : MonoBehaviour {
 	
 	}
 
-    public void SetAbilityCD(int id,int index)
+    public void SetAbilityCD(int id,int index,GameObject item)
     {
         switch (id)
         {
@@ -27,10 +29,13 @@ public class ItemCast : MonoBehaviour {
                 _a[index].SetCD(1f);
                 break;
 
-            case 3:
-                _a[index].SetCD(1);
- 
+            case 8:
+                _a[index].SetCD(3);
                 break;
+            default:
+                item.SetActive(false);
+                break;
+
 
         }
                
@@ -45,14 +50,14 @@ public class ItemCast : MonoBehaviour {
             switch (id)
             {
                 case 1:
-                    a1();
+                    _dash.Cast(Vector2.left);
                     break;
 
                 case 2:
-                    a2();
+                    _dash.Cast(Vector2.right);
                     break;
-                case 3:
-                    a3();
+                case 8:
+                    _shoot.Cast(40);
                     break;
             }
 
