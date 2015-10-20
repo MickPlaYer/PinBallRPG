@@ -15,6 +15,7 @@ public class HeroData3 : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //DontDestroyOnLoad(transform.gameObject);
+        Initialize();
         ReLoad();
         //PlayerPrefs.SetString("_item_list", Resources.Load<TextAsset>("item_list").text);
 
@@ -273,6 +274,7 @@ public class HeroData3 : MonoBehaviour {
         string default_equipment = Resources.Load<TextAsset>("equipment").text;
         
         // Get string from PlayerPrefs.
+
             _battleValue = PlayerPrefs.GetString("battle_value", default_hero_data);
         _item_box = PlayerPrefs.GetString("item_box", default_box);
 
