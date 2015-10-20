@@ -26,7 +26,7 @@ public class ItemBox
     }
 
     // Add item to data list.
-    public void PickUpItem(int id)
+    public void GetReward(int id)
     {
         ItemData item = _boxList.Find(delegate(ItemData i) { return i.ID == id; });
         if (item != null)
@@ -47,7 +47,7 @@ public class ItemBox
     {
         string json = PlayerPrefs.GetString(HERO_DATA_KEY);
         JSONNode data = JSON.Parse(json);
-        if (data["money"] == null)
+        if (data == null)
             return;
         data["money"].AsInt = data["money"].AsInt += gameLevel * Random.Range(5, 11);
         PlayerPrefs.SetString(HERO_DATA_KEY, data.ToString());

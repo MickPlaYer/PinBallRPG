@@ -3,8 +3,6 @@ using System.Collections;
 
 public class ItemBall : MonoBehaviour
 {
-    private int _id;
-    private UILevelPad _levelPad;
     private Hole _hole;
     private Rigidbody2D _rigidbody = null;
     private BoxCollider2D _collider = null;
@@ -39,21 +37,13 @@ public class ItemBall : MonoBehaviour
             Vector2 vector = _hole.transform.position - transform.position;
             if (vector.magnitude < 0.1f)
             {
-                _levelPad.PickItem(_id, gameObject);
+                gameObject.SetActive(false);
             }
         }
     }
 
-    // Set the level pad and hole.
-    public void SetRelatedObject(UILevelPad levelPad, Hole hole)
+    public Hole Hole
     {
-        _levelPad = levelPad;
-        _hole = hole;
-    }
-
-    public int ID
-    {
-        get { return _id; }
-        set { _id = value; }
+        set { _hole = value; }
     }
 }

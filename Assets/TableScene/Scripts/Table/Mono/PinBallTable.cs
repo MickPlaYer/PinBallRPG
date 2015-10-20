@@ -115,13 +115,12 @@ public class PinBallTable : MonoBehaviour
     {
         GameObject ojb = Resources.Load<GameObject>("Item");
         ojb.GetComponent<SpriteRenderer>().color = _boss.GetColor(false);
-        foreach (int id in _boss.GetDropItems())
+        int count = _boss.DropItemsCount;
+        Debug.Log("_boss.DropItemsCount: " + count);
+        for (int i = 0; i < count; i++)
         {
             GameObject item = Instantiate(ojb);
-            var itemBall = item.GetComponent<ItemBall>();
-            itemBall.SetRelatedObject(_levelPad, _hole);
-            itemBall.ID = id;
-            _levelPad.AddItem(item);
+            item.GetComponent<ItemBall>().Hole = _hole;
         }
     }
 
@@ -139,7 +138,8 @@ public class PinBallTable : MonoBehaviour
     private void ShutDownTable()
     {
         var OptionButton = GameObject.Find("OptionButton");
-        OptionButton.SetActive(false);
+        if (OptionButton != null)
+            OptionButton.SetActive(false);
         var leftBuffer = GameObject.Find("BufferTriangleLeft/Buffer");
         if (leftBuffer != null)
             leftBuffer.SetActive(false);
@@ -171,6 +171,8 @@ public class PinBallTable : MonoBehaviour
     // When ball moved a number of length.
     private void OnBallMoveUnit()
     {
+        if (_boss.HP <= 0)
+            return;
         _ballMoveCount += _ballRD.velocity.magnitude;
         if (_ballMoveCount >= BALL_MOVE_UNIT)
         {
@@ -228,7 +230,7 @@ public class PinBallTable : MonoBehaviour
     {
         _ball.transform.localScale *= 0.9f;
         if (_ball.transform.localScale.x < 0.01f)
-            if (_levelPad.IsAllItemPicked)
+            if (GameObject.Find("Item(Clone)") == null)
             {
                 if (_isEnd)
                     return;

@@ -11,6 +11,7 @@ public class Boss : MonoBehaviour
     private List<int> _itemIDs = new List<int>();
     private Color _color;
     public PinBallTable _table;
+    public UILevelPad _levelPad;
     public SpriteRenderer _sprite;
     public SpriteRenderer _ring;
     public SpriteRenderer _back;
@@ -24,8 +25,9 @@ public class Boss : MonoBehaviour
         _sprite.color = _color;
         _ring.color = _color;
         _back.color = _color;
-        Random.seed = (int)(Time.time * 1000);
+        Random.seed = (int)System.DateTime.Now.Ticks;
         PrepareDropItems(gameLevel);
+        _levelPad.PickedIDList = _itemIDs;
         CreateAttributeValues(gameLevel);
     }
 
@@ -44,22 +46,21 @@ public class Boss : MonoBehaviour
     // Random get the boss's drop items.
     private void PrepareDropItems(int gameLevel)
     {
-        int levelFloor = (gameLevel - 1) / LEVEL_RANGE;
+        int levelFloor = (gameLevel - 1) / LEVEL_RANGE + 1;
+        Debug.Log("levelFloor: " + levelFloor);
         int itemAmount = gameLevel % LEVEL_RANGE;
         if (itemAmount == 0)
             itemAmount = LEVEL_RANGE;
         for (int i = 0; i < itemAmount; i++)
         {
-            int id = Random.Range(0, gameLevel + 1);
+            int id = Random.Range(0, levelFloor + 1);
+            Debug.Log("id = Random.Range: " + id);
             if (id != 0)
                 _itemIDs.Add(id);
+            if (id > _levelPad.MaxItemID)
+                id = _levelPad.MaxItemID;
         }
-    }
-
-    // Return the drop item IDs.
-    public int[] GetDropItems()
-    {
-        return _itemIDs.ToArray();
+        Debug.Log(DropItemsCount);
     }
 
     // Get the boss's color.
@@ -94,5 +95,10 @@ public class Boss : MonoBehaviour
     {
         get { return _atk; }
         set { _atk = value; }
+    }
+
+    public int DropItemsCount 
+    {
+        get { return _itemIDs.Count; }
     }
 }

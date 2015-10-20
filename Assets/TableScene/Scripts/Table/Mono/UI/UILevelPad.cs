@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +13,8 @@ public class UILevelPad : MonoBehaviour
     private const string CLEAR_EXIT = "回到\n選單";
     private const string CLEAR_TITLE = " 通過！";
     private ItemBox _itemBox;
-    private List<GameObject> _itemList = new List<GameObject>();
+    private ItemList _itemList;
+    private List<int> _pickedIDList = new List<int>();
     private int _gameLevel = 1;
     public HPBar _hpBar;
     public Text _title;
@@ -25,6 +25,7 @@ public class UILevelPad : MonoBehaviour
     void Start()
     {
         _itemBox = new ItemBox();
+        _itemList = new ItemList();
         _gameLevel = PlayerPrefs.GetInt(CURRENT_LEVEL_KEY, 1);
         RectTransform rect = GetComponent<RectTransform>();
         rect.anchoredPosition = Vector2.zero;
@@ -72,32 +73,24 @@ public class UILevelPad : MonoBehaviour
         Application.LoadLevel(0);
     }
 
-    // Add item to item list.
-    public void AddItem(GameObject item)
-    {
-        _itemList.Add(item);
-    }
-
-    // Add item from item list to item box.
-    public void PickItem(int id, GameObject obj)
-    {
-        _itemBox.PickUpItem(id);
-        _itemList.Remove(obj);
-        Destroy(obj);
-    }
-
-    // If all items are picked.
-    public bool IsAllItemPicked
-    {
-        get { return _itemList.Count == 0; }
-    }
-
     // Add up level count and save items into PlayerPrefs.
     private void SaveGameChanged()
     {
+        foreach(int id in _pickedIDList)
+            _itemBox.GetReward(id);
         _itemBox.SaveReward(_gameLevel);
         _gameLevel++;
         PlayerPrefs.SetInt(CURRENT_LEVEL_KEY, _gameLevel);
         PlayerPrefs.Save();
+    }
+
+    public int MaxItemID
+    {
+        get { return _itemList.MaxID; }
+    }
+
+    public List<int> PickedIDList
+    {
+        set { _pickedIDList = value; }
     }
 }
