@@ -114,13 +114,13 @@ public class PinBallTable : MonoBehaviour
     private void MakeItemDrop()
     {
         GameObject ojb = Resources.Load<GameObject>("Item");
-        ojb.GetComponent<SpriteRenderer>().color = _boss.GetColor(false);
         int count = _boss.DropItemsCount;
         Debug.Log("_boss.DropItemsCount: " + count);
         for (int i = 0; i < count; i++)
         {
             GameObject item = Instantiate(ojb);
             item.GetComponent<ItemBall>().Hole = _hole;
+            item.GetComponent<SpriteRenderer>().color = _boss.GetColor(false);
         }
     }
 
