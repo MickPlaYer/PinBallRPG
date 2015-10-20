@@ -117,7 +117,11 @@ public void OnItemPressed(int index)
     {
         //Debug.Log("BeforeEquip");
         if (_selectingItemId != 0)
-            _heroData.setEqu(_selectingItemId,_amount);
+        {
+            _itemName.text = "";
+            _itemInfoText.text = "";
+            _heroData.setEqu(_selectingItemId, _amount);
+        }
         ShowItem();
         _SEI.ShowItem();
         _selectingItemId = 0;

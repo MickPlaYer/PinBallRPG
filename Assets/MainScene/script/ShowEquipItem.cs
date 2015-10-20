@@ -103,7 +103,12 @@ public class ShowEquipItem : MonoBehaviour {
     {
         //Debug.Log("BeforeTakeOff");
         if(_selectingItemId!=0)
-        _heroData.setTakeOff(_selectingItemId, _amount);
+        {
+            _itemName.text = "";
+            _heroData.setTakeOff(_selectingItemId, _amount);
+            _itemInfoText.text = "";
+        }
+     
         _IC.ShowItem();
         ShowItem();
         _selectingItemId = 0;

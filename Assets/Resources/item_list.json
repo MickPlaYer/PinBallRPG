@@ -6,7 +6,16 @@
     "price": 0,
     "description": "nothing.",
     "manufacturable": 0,
-    "material": [{ "id": 0,"amount":0 },{ "id": 0,"amount":0 }],
+    "material": [
+      {
+        "id": 0,
+        "amount": 0
+      },
+      {
+        "id": 0,
+        "amount": 0
+      }
+    ],
     "hit_point": 0,
     "attack_point": 0,
     "recovery": 0
@@ -18,23 +27,41 @@
     "price": 50,
     "description": "增加血量 5",
     "manufacturable": 0,
-    "material": [{ "id": 0,"amount":0 },{ "id": 0,"amount":0 }],
+    "material": [
+      {
+        "id": 0,
+        "amount": 0
+      },
+      {
+        "id": 0,
+        "amount": 0
+      }
+    ],
     "hit_point": 5,
     "attack_point": 0,
     "recovery": 0
   },
-    {
-      "id" : 2,
-      "name": "恢復水晶(小)",
-      "path": "texture/GreenCrystal",
-      "price":  50,
-      "description": "增加恢復力 1",
-       "manufacturable": 0,
-    "material": [{ "id": 0,"amount":0 },{ "id": 0,"amount":0 }],
-     "hit_point": 0,
+  {
+    "id": 2,
+    "name": "恢復水晶(小)",
+    "path": "texture/GreenCrystal",
+    "price": 50,
+    "description": "增加恢復力 1",
+    "manufacturable": 0,
+    "material": [
+      {
+        "id": 0,
+        "amount": 0
+      },
+      {
+        "id": 0,
+        "amount": 0
+      }
+    ],
+    "hit_point": 0,
     "attack_point": 0,
     "recovery": 1
-    },
+  },
 
   {
     "id": 3,
@@ -42,8 +69,17 @@
     "path": "texture/Weapons_Sword",
     "price": 50,
     "description": "增加攻擊力 5",
-     "manufacturable": 0,
-    "material": [{ "id": 0,"amount":0 },{ "id": 0,"amount":0 }],
+    "manufacturable": 0,
+    "material": [
+      {
+        "id": 0,
+        "amount": 0
+      },
+      {
+        "id": 0,
+        "amount": 0
+      }
+    ],
     "hit_point": 5,
     "attack_point": 0,
     "recovery": 0
@@ -54,8 +90,13 @@
     "path": "texture/RedCrystal",
     "price": 150,
     "description": "增加血量 20",
-     "manufacturable": 1,
-    "material": [{ "id": 1,"amount":3 }],
+    "manufacturable": 1,
+    "material": [
+      {
+        "id": 1,
+        "amount": 3
+      }
+    ],
     "hit_point": 20,
     "attack_point": 0,
     "recovery": 0
@@ -66,8 +107,13 @@
     "path": "texture/GreenCrystal",
     "price": 150,
     "description": "增加恢復力 2",
-     "manufacturable": 1,
-    "material": [{ "id": 2,"amount":3 }],
+    "manufacturable": 1,
+    "material": [
+      {
+        "id": 2,
+        "amount": 3
+      }
+    ],
     "hit_point": 0,
     "attack_point": 0,
     "recovery": 2
@@ -78,32 +124,107 @@
     "path": "texture/Weapons_Axe",
     "price": 150,
     "description": "增加攻擊力 20",
-     "manufacturable": 1,
-    "material": [{ "id": 3,"amount":3 }],
+    "manufacturable": 1,
+    "material": [
+      {
+        "id": 3,
+        "amount": 3
+      }
+    ],
     "hit_point": 0,
     "attack_point": 20,
     "recovery": 0
-  },{
+  },
+  {
     "id": 7,
     "name": "盾牌",
     "path": "texture/Equipment_Shield",
-    "price": 1,
+    "price": 500,
     "description": "增加血量:60",
-     "manufacturable": 1,
-    "material": [{ "id": 4,"amount":3 }],
+    "manufacturable": 1,
+    "material": [
+      {
+        "id": 4,
+        "amount": 3
+      }
+    ],
     "hit_point": 0,
     "attack_point": 20,
     "recovery": 0
-  },{
+  },
+  {
     "id": 8,
-    "name": "咻咻",
-    "path": "texture/Modifiers_Accuracy",
+    "name": "盔甲",
+    "path": "texture/Equipment_Vest",
+    "price": 800,
+    "description": "增加血量:100 ",
+    "manufacturable": 1,
+    "material": [
+      {
+        "id": 7,
+        "amount": 1
+      },
+      {
+        "id": 4,
+        "amount": 2
+      }
+    ],
+    "hit_point": 100,
+    "attack_point": 0,
+    "recovery": 0
+  } ,
+  {
+    "id": 11,
+    "name": "材料: 胡蘿蔔",
+    "path": "texture/Inventory_Carrot",
     "price": 500,
-    "description": "增加血量:40 \n 增加攻擊力:20",
-     "manufacturable": 1,
-    "material": [{ "id": 6,"amount":1 },{ "id": 4,"amount":2 }],
-    "hit_point": 40,
-    "attack_point": 20,
+    "description": "沒甚麼功能，用來合成",
+    "manufacturable": 0,
+    "material": [ ],
+    "hit_point": 0,
+    "attack_point": 0,
     "recovery": 0
   }
+  ,
+  {
+    "id": 12,
+    "name": "弓",
+    "path": "texture/Weapons_Bow",
+    "price": 750,
+    "description": "增加血攻擊力100",
+    "manufacturable": 1,
+    "material": [
+      {
+        "id": 6,
+        "amount": 5
+      }
+    ],
+    "hit_point": 0,
+    "attack_point": 100,
+    "recovery": 0
+  },
+  {
+    "id": 13,
+    "name": "神奇的獎盃",
+    "path": "texture/Rewards_Cup",
+    "price": 1000,
+    "description": "增加血攻擊力80 \n 增加血量 80",
+    "manufacturable": 1,
+    "material": [
+      {
+        "id": 6,
+        "amount": 3
+      }{
+        "id": 7,
+        "amount": 1
+      }{
+        "id": 11,
+        "amount": 2
+      }
+    ],
+    "hit_point": 0,
+    "attack_point": 100,
+    "recovery": 0
+  }
+
 ]

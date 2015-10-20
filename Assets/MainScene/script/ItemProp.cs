@@ -60,6 +60,7 @@ public class ItemProp : MonoBehaviour {
         setSelectFrameDefault();
         _onSelected = true;
         _selectFrame.transform.position = transform.position;
+        _selectFrame.transform.SetParent(transform.parent.parent);
     }
 
     public void setSelectFrameDefault()
