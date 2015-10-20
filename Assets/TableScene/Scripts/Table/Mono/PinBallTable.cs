@@ -115,7 +115,6 @@ public class PinBallTable : MonoBehaviour
     {
         GameObject ojb = Resources.Load<GameObject>("Item");
         int count = _boss.DropItemsCount;
-        Debug.Log("_boss.DropItemsCount: " + count);
         for (int i = 0; i < count; i++)
         {
             GameObject item = Instantiate(ojb);
@@ -230,6 +229,7 @@ public class PinBallTable : MonoBehaviour
     {
         _ball.transform.localScale *= 0.9f;
         if (_ball.transform.localScale.x < 0.01f)
+        {
             if (GameObject.Find("Item(Clone)") == null)
             {
                 if (_isEnd)
@@ -238,6 +238,7 @@ public class PinBallTable : MonoBehaviour
                 _levelPad.ShowSuccessPad();
                 _isEnd = true;
             }
+        }
     }
 
     // Contorl the input.
