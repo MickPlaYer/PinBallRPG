@@ -6,7 +6,7 @@ public class BossSkillController : MonoBehaviour
     public BossMagicArrow _BMA;
     public int _currentLevel;
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         _currentLevel = PlayerPrefs.GetInt("current_level");
         _BMA.gameObject.SetActive(false);

@@ -21,7 +21,7 @@ public class EquipButton : MonoBehaviour {
         switch(_state)
         {
             case 0:
-                Debug.Log(PlayerPrefs.GetString("_equipment"));
+                //Debug.Log(PlayerPrefs.GetString("_equipment"));
                 _IC.Equip();
                 break;
             case 1:
