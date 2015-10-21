@@ -80,7 +80,7 @@
         "amount": 0
       }
     ],
-    "hit_point": ,
+    "hit_point": 0,
     "attack_point": 5,
     "recovery": 0
   },
@@ -148,8 +148,8 @@
         "amount": 3
       }
     ],
-    "hit_point": 0,
-    "attack_point": 20,
+    "hit_point": 60,
+    "attack_point": 0,
     "recovery": 0
   },
   {
@@ -226,27 +226,27 @@
     "hit_point": 0,
     "attack_point": 0,
     "recovery": 0
-  }
-  ,
+  },
   {
     "id": 12,
     "name": "弓",
     "path": "texture/Weapons_Bow",
     "price": 1100,
-    "description": "增加攻擊力70 ， 恢復力20。帶有一點魔法(高階魔法箭)",
+    "description": "增加攻擊力70 ， 恢復力7。帶有一點魔法(高階魔法箭)",
     "manufacturable": 1,
     "material": [
       {
         "id": 6,
         "amount": 5
-      },{
+      },
+      {
         "id": 10,
         "amount": 1
       }
     ],
     "hit_point": 0,
-    "attack_point": 100,
-    "recovery": 0
+    "attack_point": 70,
+    "recovery": 7
   },
   {
     "id": 13,
@@ -259,16 +259,18 @@
       {
         "id": 6,
         "amount": 3
-      }{
+      }
+      {
         "id": 7,
         "amount": 1
-      }{
+      }
+      {
         "id": 11,
         "amount": 2
       }
     ],
-    "hit_point": 0,
-    "attack_point": 100,
+    "hit_point": 80,
+    "attack_point": 80,
     "recovery": 0
   }
 

@@ -321,9 +321,17 @@ public class HeroData3 : MonoBehaviour {
 
     public void getShock()
     {
-        if (PlayerPrefs.GetInt("shock") == 1)
+        if (PlayerPrefs.GetInt("shock",1) == 1)
             _shock.isOn = true;
         else
             _shock.isOn = false;
+    }
+
+    public void addMoney()
+    {
+        var data = JSON.Parse(PlayerPrefs.GetString("_hero_data"));
+        data["money"] = (data["money"].AsInt +5000).ToString();
+        _hero_data = data.ToString();
+        PlayerPrefs.SetString("_hero_data", _hero_data);
     }
 }
