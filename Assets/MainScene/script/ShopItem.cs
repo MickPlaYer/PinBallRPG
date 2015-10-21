@@ -29,6 +29,7 @@ public class ShopItem : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        _item_list = JSON.Parse( Resources.Load<TextAsset>("item_list").text);
         Initialize();
         _itemToBuy.gameObject.SetActive(false);
         ShowItem();
@@ -64,7 +65,6 @@ public class ShopItem : MonoBehaviour {
     public void ShowItem()
     {
         Initialize();
-    
 
             for (int i = 1; i < _item_list.Count; i++)
             {
@@ -95,7 +95,7 @@ public class ShopItem : MonoBehaviour {
 
     public void Initialize()
     {
-        RefreshData();
+        _item_list = JSON.Parse(Resources.Load<TextAsset>("item_list").text);
         for (int i = 0; i < transform.childCount; i++)
         {
             Destroy(transform.GetChild(i).gameObject);
@@ -105,30 +105,28 @@ public class ShopItem : MonoBehaviour {
         _totalPriceText.text = "";
         _selectingId = 0;
         _itemInfoText.text = "";
+        _singlePrice.text = "";
     }
 
     public void Buy()
     {
-       if(_selectingId!=0)
+        _amount = (int)_amountSlider.value;
+        if (_selectingId!=0)
         {
            // Debug.Log("buy");
             _heroData.BuyItem(_selectingId, _amount, _totalPrice);
         }
 
-        RefreshData();
+
         _amountSlider.value = 0;
         _amount = (int)_amountSlider.value;
         //_amountText.text = "數量: " + _amount.ToString();
         _amountSlider.maxValue = JSON.Parse(_heroData.getData())["money"].AsInt / _price;
+        Debug.Log("shop:" + JSON.Parse(_heroData.getData())["money"].AsInt);
         _totalPrice = _amount * _price;
         _totalPriceText.text = _totalPrice.ToString();
+        _money.text = "金錢: " + JSON.Parse(_heroData.getData())["money"].AsInt;
     }
 
-    void RefreshData()
-    {
-    
-        _item_list = JSON.Parse(_heroData.getList());
-       // _heroInfo = JSON.Parse(_heroData.getData());
-    }
 
 }

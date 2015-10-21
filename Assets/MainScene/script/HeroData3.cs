@@ -197,7 +197,7 @@ public class HeroData3 : MonoBehaviour {
 
     public void setValue()
     {
-        ReLoad();
+  
          _bAtk =  _bHp =  _bRe = 0;
         var equ = JSON.Parse(_equipment);
         var list = JSON.Parse(_item_list);
@@ -253,6 +253,7 @@ public class HeroData3 : MonoBehaviour {
         _item_box = box.ToString();
         
         data["money"] = (data["money"].AsInt - price).ToString();
+        Debug.Log("shop:" + data["money"]);
         _hero_data = data.ToString();
         //Debug.Log(data["money"]);
       //  PlayerPrefs.SetString("_hero_data", _hero_data);
