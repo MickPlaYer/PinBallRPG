@@ -52,7 +52,6 @@ public class UILevelPad : MonoBehaviour
     {
         if (gameObject.activeSelf)
             return;
-        SaveGameChanged();
         // Set texts.
         _title.text = LEVEL_ + _gameLevel + CLEAR_TITLE;
         _stay.text = CLEAR_STAY;
@@ -62,6 +61,7 @@ public class UILevelPad : MonoBehaviour
             Sprite sprite = _itemList.GetSprite(id);
             _rewardPad.AddItemImage(sprite);
         }
+        SaveGameChanged();
         // Hide hp bar and make cover into black.
         _hpBar.Scale = 0f;
         _hpBar.gameObject.SetActive(false);
