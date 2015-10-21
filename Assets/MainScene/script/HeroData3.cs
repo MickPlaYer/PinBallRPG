@@ -197,7 +197,7 @@ public class HeroData3 : MonoBehaviour {
 
     public void setValue()
     {
-
+        ReLoad();
          _bAtk =  _bHp =  _bRe = 0;
         var equ = JSON.Parse(_equipment);
         var list = JSON.Parse(_item_list);
@@ -279,6 +279,7 @@ public class HeroData3 : MonoBehaviour {
 
         _item_list =  Resources.Load<TextAsset>("item_list").text;
         _equipment = PlayerPrefs.GetString("_equipment", default_equipment);
+
     }
 
     public void Initialize()

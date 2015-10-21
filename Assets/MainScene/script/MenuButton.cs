@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class MenuButton : MonoBehaviour {
+    public HeroData3 _heroData;
     public int _menuIndex = 2;
     public int _buttonNum;
     public GameObject[] _panels = new GameObject[7];
@@ -100,6 +101,7 @@ public class MenuButton : MonoBehaviour {
 
     public void loadBattleScene()
     {
+        _heroData.savePlayerPref();
         PlayerPrefs.Save();
         Application.LoadLevel(1);
     }
