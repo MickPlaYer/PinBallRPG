@@ -690,7 +690,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1785008025}
+      - m_Target: {fileID: 1785008027}
         m_MethodName: right
         m_Mode: 1
         m_Arguments:
@@ -1266,7 +1266,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1785008025}
+      - m_Target: {fileID: 1785008027}
         m_MethodName: left
         m_Mode: 1
         m_Arguments:
@@ -5718,6 +5718,7 @@ GameObject:
   - 4: {fileID: 1785008024}
   - 114: {fileID: 1785008025}
   - 82: {fileID: 1785008026}
+  - 114: {fileID: 1785008027}
   m_Layer: 0
   m_Name: Dash
   m_TagString: Untagged
@@ -5750,8 +5751,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 2078858909}
   _audio: {fileID: 1785008026}
-  _leftMask: {fileID: 711143360}
-  _rightMask: {fileID: 792231940}
 --- !u!82 &1785008026
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5822,6 +5821,20 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &1785008027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1785008023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0426ab5c87fc8f4a9c6db177d19bb4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dash: {fileID: 1785008025}
+  _leftMask: {fileID: 711143360}
+  _rightMask: {fileID: 792231940}
 --- !u!1 &1789273897
 GameObject:
   m_ObjectHideFlags: 0
