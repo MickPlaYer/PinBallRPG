@@ -4,7 +4,9 @@ using System.Collections.Generic;
 
 public class Boss : MonoBehaviour
 {
-    const int LEVEL_RANGE = 3;
+    private const int LEVEL_RANGE = 4;
+    private const float GROW_VALUE = 1.3f;
+    private const float GROW_SIZE = 1.01f;
     private float _hitPoint = 50;
     private float _hitPointMax = 50;
     private float _atk = 10;
@@ -36,9 +38,9 @@ public class Boss : MonoBehaviour
     {
         for (int i = 0; i < gameLevel - 1; i++)
         {
-            _hitPoint *= 1.1f;
-            _atk *= 1.1f;
-            transform.localScale *= 1.01f;
+            _hitPoint *= GROW_VALUE;
+            _atk *= GROW_VALUE;
+            transform.localScale *= GROW_SIZE;
         }
         _hitPointMax = _hitPoint;
     }
@@ -77,6 +79,7 @@ public class Boss : MonoBehaviour
         transform.Translate(-collision.relativeVelocity / 100f);
     }
 
+    // Get hp and set hp then reflash color alpha.
     public float HP
     {
         get { return _hitPoint; }

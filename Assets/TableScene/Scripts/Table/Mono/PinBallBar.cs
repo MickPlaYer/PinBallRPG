@@ -17,8 +17,8 @@ public class PinBallBar : MonoBehaviour
     private Vector3 _angles;
     private State _state = State.Bottom;
     private KeyCode _keyCode = KeyCode.Space;
-    private BarController _controller = null;
     private AudioSource _audio;
+    public BarController _controller = null;
 
     // Use this for initialization
     void Start()
@@ -46,25 +46,31 @@ public class PinBallBar : MonoBehaviour
             {
                 Rigidbody2D ball = collision.gameObject.GetComponent<Rigidbody2D>();
                 Vector2 contactNormal = collision.contacts[0].normal;
-                Vector2 relativeVelocity = collision.relativeVelocity;
-                float _barValue = (MAX_ANGLE - _angles.z) / UNIT_ANGLE + 40;
-                ball.AddForce((-contactNormal * _barValue * 20f) + relativeVelocity, ForceMode2D.Force);
+                Vector2 fromAnchor = ball.transform.position - transform.position;
+                float _barValue = (MAX_ANGLE - _angles.z) / UNIT_ANGLE + 40f;
+                ball.AddForce((-contactNormal * _barValue * 20f) + fromAnchor * 100f, ForceMode2D.Force);
             }
         }
     }
 
+    // Control input.
+    public void ControlInput()
+    {
+        if (_controller.IsButtonHeld)
+            GoUp();
+    }
+
     // Let the bar start turnning up.
-    public void GoUp(BarController controller)
+    private void GoUp()
     {
         if (_state == State.Bottom)
         {
             _audio.Play();
-            _controller = controller;
             _state = State.Upping;
         }
     }
 
-    // Let the bar start turnning up.
+    // Let the bar start turnning up. PC debug.
     public void GoUp(KeyCode keyCode)
     {
         if (_state == State.Bottom)
@@ -79,6 +85,7 @@ public class PinBallBar : MonoBehaviour
     public void ShutDown()
     {
         _state = State.Downing;
+        _controller.IsButtonHeld = false;
     }
 
     // Set the bar's colloder.
@@ -114,7 +121,7 @@ public class PinBallBar : MonoBehaviour
     {
         if (_controller != null)
         {
-            if (_state == State.Top && !_controller.GetButton())
+            if (_state == State.Top && !_controller.IsButtonHeld)
                 _state = State.Downing;
         }
         else

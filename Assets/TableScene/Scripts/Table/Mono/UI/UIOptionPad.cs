@@ -4,6 +4,7 @@ using System.Collections;
 public class UIOptionPad : MonoBehaviour
 {
     public GameObject _levelPad;
+    public GameObject[] _hideObject;
 
     // Use this for initialization
     void Start()
@@ -19,6 +20,8 @@ public class UIOptionPad : MonoBehaviour
         if (_levelPad.activeSelf)
             return;
         Time.timeScale = 0f;
+        foreach (GameObject obj in _hideObject)
+            obj.SetActive(false);
         gameObject.SetActive(true);
     }
 
@@ -26,13 +29,15 @@ public class UIOptionPad : MonoBehaviour
     public void Close()
     {
         Time.timeScale = 1f;
+        foreach (GameObject obj in _hideObject)
+            obj.SetActive(true);
         gameObject.SetActive(false);
     }
 
-    // Close itself.
+    // Back to title.
     public void BackToTitle()
     {
         Time.timeScale = 1f;
-        Application.LoadLevel("MainScene");
+        _levelPad.GetComponent<UILevelPad>().LoadMenuScene();
     }
 }

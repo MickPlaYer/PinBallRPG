@@ -5,20 +5,21 @@ using UnityEngine.EventSystems;
 
 public class BarController : MonoBehaviour, IEventSystemHandler
 {
-    public bool _buttonHeld = false;
+    private bool _isButtonHeld = false;
 
     public void Pressed(BaseEventData eventData)
     {
-        _buttonHeld = true;
+        _isButtonHeld = true;
     }
 
     public void Notpressed(BaseEventData eventData)
     {
-        _buttonHeld = false;
+        _isButtonHeld = false;
     }
 
-    public bool GetButton()
+    public bool IsButtonHeld
     {
-        return _buttonHeld;
+        get { return _isButtonHeld; }
+        set { _isButtonHeld = value; }
     }
 }

@@ -7,18 +7,6 @@ public class RewardPad : MonoBehaviour
     public Image[] _items;
     private int _index = 0;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     // Add item image to show.
     public void AddItemImage(Sprite sprite)
     {

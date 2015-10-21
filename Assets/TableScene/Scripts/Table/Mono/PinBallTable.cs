@@ -13,12 +13,12 @@ public class PinBallTable : MonoBehaviour
     private Hashtable _sounds = new Hashtable();
     private bool _isEnd = false;
     private int _flyNumberIndex = 0;
+    public GameObject[] _hideObject;
     public ComboBox _comboBox;
     public int _debugLevel = 0;
     public float bottom = -8.5f;
     public PinBallBar _barLeft;
     public PinBallBar _barRight;
-    public BarController[] _controller;
     public Boss _boss;
     public Hole _hole;
     public GameObject _ball;
@@ -49,9 +49,6 @@ public class PinBallTable : MonoBehaviour
         if (_hero.HP < 0)
             return;
         DoBallMove();
-        // Bellow is for Debug
-        GetComponent<GUIText>().text = "Boss HP:" + _boss.HP.ToString() + "\nHero HP:" + _hero.HP.ToString();
-        // Debug.DrawLine(_ball.transform.position, (Vector2)_ball.transform.position + _ballRD.velocity);
     }
 
     // When hero is attack the boss.
@@ -136,24 +133,8 @@ public class PinBallTable : MonoBehaviour
     // Shut down the objects on the table.
     private void ShutDownTable()
     {
-        // TODO fix with loop.
-        var optionButton = GameObject.Find("OptionButton");
-        if (optionButton != null)
-            optionButton.SetActive(false);
-        var leftBuffer = GameObject.Find("BufferTriangleLeft/Buffer");
-        if (leftBuffer != null)
-            leftBuffer.SetActive(false);
-        var rightBuffer = GameObject.Find("BufferTriangleRight/Buffer");
-        if (rightBuffer != null)
-            rightBuffer.SetActive(false);
-        var leftDash = GameObject.Find("LeftDash");
-        if (leftDash != null)
-            leftDash.SetActive(false);
-        var rightDash = GameObject.Find("RightDash");
-        if (rightDash != null)
-            rightDash.SetActive(false);
-        _controller[0]._buttonHeld = false;
-        _controller[1]._buttonHeld = false;
+        foreach (GameObject obj in _hideObject)
+            obj.SetActive(false);
         _barLeft.ShutDown();
         _barRight.ShutDown();
         _comboBox.ShutDown();
@@ -177,7 +158,7 @@ public class PinBallTable : MonoBehaviour
     // When ball moved a number of length.
     private void OnBallMoveUnit()
     {
-        if (_boss.HP <= 0)
+        if (_hero.HP <= 0)
             return;
         _ballMoveCount += _ballRD.velocity.magnitude;
         if (_ballMoveCount >= BALL_MOVE_UNIT)
@@ -254,10 +235,8 @@ public class PinBallTable : MonoBehaviour
         if (_isEnd)
             return;
         // For mobiles.
-        if (_controller[0].GetButton())
-            _barLeft.GoUp(_controller[0]);
-        if (_controller[1].GetButton())
-            _barRight.GoUp(_controller[1]);
+        _barLeft.ControlInput();
+        _barRight.ControlInput();
         // For PC debug.
         if (Input.GetKey(KeyCode.A))
             _barLeft.GoUp(KeyCode.A);

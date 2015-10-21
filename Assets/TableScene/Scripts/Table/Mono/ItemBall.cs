@@ -25,20 +25,32 @@ public class ItemBall : MonoBehaviour
     {
         if (_collider == null)
         {
-            _timeCount++;
-            if (_timeCount > 100)
-            {
-                _collider = gameObject.AddComponent<BoxCollider2D>();
-                _collider.isTrigger = true;
-            }
+            WaitForBeAttracted();
         }
         else
         {
-            Vector2 vector = _hole.transform.position - transform.position;
-            if (vector.magnitude < 0.1f)
-            {
-                gameObject.SetActive(false);
-            }
+            BeAttractedThenDisappear();
+        }
+    }
+
+    // Be attracted then disappear into hole.
+    private void BeAttractedThenDisappear()
+    {
+        Vector2 vector = _hole.transform.position - transform.position;
+        if (vector.magnitude < 0.1f)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    // Wait for be atteacted by hole.
+    private void WaitForBeAttracted()
+    {
+        _timeCount++;
+        if (_timeCount > 100)
+        {
+            _collider = gameObject.AddComponent<BoxCollider2D>();
+            _collider.isTrigger = true;
         }
     }
 

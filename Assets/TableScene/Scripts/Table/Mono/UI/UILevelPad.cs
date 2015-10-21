@@ -21,6 +21,7 @@ public class UILevelPad : MonoBehaviour
     public Text _stay;
     public Text _exit;
     public RewardPad _rewardPad;
+    public GameObject _loadingImage;
 
     // Use this for initialization
     void Start()
@@ -70,12 +71,14 @@ public class UILevelPad : MonoBehaviour
     // Load the table scene.
     public void LoadTableScene()
     {
-        Application.LoadLevel("PinBallTable");
+        _loadingImage.SetActive(true);
+        Application.LoadLevel(1);
     }
 
     // Load the menu scene.
     public void LoadMenuScene()
     {
+        _loadingImage.SetActive(true);
         Application.LoadLevel(0);
     }
 
