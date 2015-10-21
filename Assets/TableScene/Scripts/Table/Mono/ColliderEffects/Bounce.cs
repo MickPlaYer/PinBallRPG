@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Bounce : MonoBehaviour
 {
+    private const float FAST_SPEED = 10f;
     public float _value = 20f;
     public bool _createAudioSouce = true;
     private AudioSource _audio = null;
@@ -25,10 +26,16 @@ public class Bounce : MonoBehaviour
             Rigidbody2D ball = collision.gameObject.GetComponent<Rigidbody2D>();
             Vector2 contactNormal = collision.contacts[0].normal;
             float velocity = collision.relativeVelocity.magnitude;
-            if (_audio != null)
-                if (velocity > 10f)
-                    _audio.Play();
+            PlayAudio(velocity);
             ball.AddForce(-contactNormal * velocity * _value, ForceMode2D.Force);
         }
+    }
+
+    // Play audio if speed is fast.
+    private void PlayAudio(float speed)
+    {
+        if (_audio != null)
+            if (speed > FAST_SPEED)
+                _audio.Play();
     }
 }

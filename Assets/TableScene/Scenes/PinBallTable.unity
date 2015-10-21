@@ -2132,6 +2132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c7a4ad097f8e6418d07ef6ea4cf24f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bar: {fileID: 696858033}
 --- !u!1 &711143360
 GameObject:
   m_ObjectHideFlags: 0
@@ -5445,6 +5446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6236d0f0111b44eb3a511c57e01fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 1639917263}
   _velocityDown: .899999976
   _forceValue: 300
   _rotateSpeed: 10

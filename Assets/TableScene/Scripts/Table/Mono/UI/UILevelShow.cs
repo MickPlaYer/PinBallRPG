@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class UILevelShow : MonoBehaviour
 {
+    private const string LEVEL_ = "關卡 ";
     private const string CURRENT_LEVEL_KEY = "current_level";
     private const int WIDTH = 300;
     private const float WAIT_TIME = 1.5f;
@@ -24,7 +25,7 @@ public class UILevelShow : MonoBehaviour
             obj.SetActive(false);
         Time.timeScale = 0f;
         int gameLevel = PlayerPrefs.GetInt(CURRENT_LEVEL_KEY, 1);
-        _text.text = "關卡 " + gameLevel;
+        _text.text = LEVEL_ + gameLevel;
         _rectTransform = GetComponent<RectTransform>();
         _position = new Vector2((WIDTH + Screen.width) / 2f, 0f);
         _rectTransform.anchoredPosition = _position;
@@ -40,9 +41,15 @@ public class UILevelShow : MonoBehaviour
         }
         _position.x -= Screen.width / 20;
         OnMiddle();
-        if (_position.x <= -(WIDTH + Screen.width) * 2)
+        if (IsOutOfView())
             gameObject.SetActive(false);
         _rectTransform.anchoredPosition = _position;
+    }
+
+    // If the pad is out of view.
+    private bool IsOutOfView()
+    {
+        return _position.x <= -(WIDTH + Screen.width) * 2;
     }
 
     // Play ready sound at middle. 
@@ -61,9 +68,9 @@ public class UILevelShow : MonoBehaviour
     private void WaitTimeCount()
     {
         _waitCount += Time.unscaledDeltaTime;
-        // Audio: "Go!"
         if (_waitCount >= WAIT_TIME)
         {
+            // Audio: "Go!"
             _audios[1].Play();
             foreach (var obj in _hideObjects)
                 obj.SetActive(true);

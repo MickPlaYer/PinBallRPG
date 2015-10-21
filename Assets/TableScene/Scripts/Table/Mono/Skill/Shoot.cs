@@ -17,6 +17,5 @@ public class Shoot : MonoBehaviour
         projectile._table = GameObject.Find("Table").GetComponent<PinBallTable>();
         projectile.Damage = damage;
         projectile.SetTarget(_target);
-        Destroy(projectileObject, 2f);
     }
 }

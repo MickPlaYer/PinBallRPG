@@ -17,6 +17,7 @@ public class ComboCount : MonoBehaviour
         if (collision.gameObject.name == "Ball")
         {
             _comboBox.AddComboNumber();
+            Handheld.Vibrate();
         }
     }
 }

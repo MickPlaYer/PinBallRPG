@@ -19,6 +19,8 @@ public class BackgroundMusic : MonoBehaviour
                 return;
             }
         }
+        // If no one is playing or the song is not the same.
+        // Stop other and play myself.
         Destroy(_playingAudio);
         DontDestroyOnLoad(gameObject);
         _playingAudio = gameObject;

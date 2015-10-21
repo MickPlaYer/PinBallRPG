@@ -3,14 +3,8 @@ using System.Collections;
 
 public class HPBar : MonoBehaviour
 {
-    private Transform _bar;
+    public Transform _bar;
     private float _scale = 1.0f;
-
-    // Use this for initialization
-    void Start()
-    {
-        _bar = transform.FindChild("Bar");
-    }
 
     // Set the hp bar length(0f~1f)
     private void SetScale(float scale)
