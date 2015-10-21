@@ -23,7 +23,9 @@ public class SkillController : MonoBehaviour
 
     public void SetSkill()
     {
-        if (Check(5)) _magicArrow.gameObject.SetActive(true);
+        if (Check(5) ) { _magicArrow.gameObject.SetActive(true); }
+        if ( Check(10)) { _magicArrow.gameObject.SetActive(true); _magicArrow._staticDamage = 10; }
+        if ( Check(12)) { _magicArrow.gameObject.SetActive(true); _magicArrow._staticDamage = 20; }
     }
 
     public bool Check(int id)

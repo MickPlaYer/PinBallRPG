@@ -6,12 +6,12 @@ using SimpleJSON;
 public class ShowHeroInfo : MonoBehaviour {
     bool _trigger = false;
     public HeroData3 _heroData;
-    string _battleValue;
+   // string _battleValue;
     public Text[] _texts;
 	// Use this for initialization
 	void Start () {
         //_heroData = GameObject.FindGameObjectWithTag("HeroData").GetComponent<HeroData3>();
-        _battleValue = PlayerPrefs.GetString("battle_value", _heroData.getData());
+       // _battleValue = PlayerPrefs.GetString("battle_value", _heroData.getData());
         ShowData();
     }
 	

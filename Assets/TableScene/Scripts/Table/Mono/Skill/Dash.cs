@@ -30,7 +30,6 @@ public class Dash : MonoBehaviour
     {
         if(_leftTrigger)
         {
-            Debug.Log(_leftMask.transform.localScale.x);
             _leftCD -= Time.deltaTime;
             //_LC.width -= _DL /3 * Time.deltaTime;
             _leftMask.transform.localScale=new Vector3(_leftMask.transform.localScale.x-Time.deltaTime / 3,1,1);

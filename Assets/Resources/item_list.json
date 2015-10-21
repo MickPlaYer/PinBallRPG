@@ -172,7 +172,49 @@
     "hit_point": 100,
     "attack_point": 0,
     "recovery": 0
-  } ,
+  },
+  {
+    "id": 9,
+    "name": "紅水晶(大)",
+    "path": "texture/RedCrystal",
+    "price": 400,
+    "description": "增加血量 45",
+    "manufacturable": 1,
+    "material": [
+      {
+        "id": 4,
+        "amount": 2
+      },
+      {
+        "id": 1,
+        "amount": 2
+      }
+    ],
+    "hit_point": 45,
+    "attack_point": 0,
+    "recovery": 0
+  },
+  {
+    "id": 10,
+    "name": "恢復水晶(大)",
+    "path": "texture/GreenCrystal",
+    "price": 400,
+    "description": "增加恢復力 5 。 帶有一點魔法(中階魔法箭)",
+    "manufacturable": 1,
+    "material": [
+      {
+        "id": 5,
+        "amount": 2
+      },
+      {
+        "id": 2,
+        "amount": 2
+      }
+    ],
+    "hit_point": 0,
+    "attack_point": 0,
+    "recovery": 5
+  },
   {
     "id": 11,
     "name": "材料: 胡蘿蔔",
@@ -190,13 +232,16 @@
     "id": 12,
     "name": "弓",
     "path": "texture/Weapons_Bow",
-    "price": 750,
-    "description": "增加血攻擊力100",
+    "price": 1100,
+    "description": "增加攻擊力70 ， 恢復力20。帶有一點魔法(高階魔法箭)",
     "manufacturable": 1,
     "material": [
       {
         "id": 6,
         "amount": 5
+      },{
+        "id": 10,
+        "amount": 1
       }
     ],
     "hit_point": 0,
@@ -207,7 +252,7 @@
     "id": 13,
     "name": "神奇的獎盃",
     "path": "texture/Rewards_Cup",
-    "price": 1000,
+    "price": 1100,
     "description": "增加攻擊力80 ,增加血量 80",
     "manufacturable": 1,
     "material": [

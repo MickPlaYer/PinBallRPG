@@ -17,18 +17,16 @@ public class InvetoryController : MonoBehaviour {
     public Text _buttonText;
     public EquipButton _EB;
 
-    JSONNode _heroInfo;
+
     JSONNode _item_list;
     JSONNode _item_box;
 
 
     int _itemSortQuan = 0; //物品種類數量
-    GameObject[] _items = new GameObject[4];
+    
 	// Use this for initialization
 	void Start () {
-
-     
-  
+        LoadJsonToString();
     }
 	
 	// Update is called once per frame
@@ -38,7 +36,8 @@ public class InvetoryController : MonoBehaviour {
 
     void LoadJsonToString()
     {
-        _item_list = Resources.Load<TextAsset>("item_list").text;
+        _item_box = JSON.Parse(_heroData.getBox());
+        _item_list = JSON.Parse(_heroData.getList());
     }
 
     void PanelHeightController()
@@ -61,9 +60,8 @@ public class InvetoryController : MonoBehaviour {
     public void ShowItem()
     {
         Initialize();
-        _item_box = JSON.Parse(_heroData.getBox());
-        _item_list = JSON.Parse(_heroData.getList());
-        _heroInfo = JSON.Parse(_heroData.getData());
+        LoadJsonToString();
+
         _itemSortQuan = _item_box.Count;
         for (int j = 0; j < _item_box.Count; j++)
         {
@@ -90,15 +88,23 @@ public class InvetoryController : MonoBehaviour {
 
 
 
-public void OnItemPressed(int index)
+public void OnItemPressed(int id)
     {
-        _itemName.text= _item_list[index]["name"].ToString().Replace("\"","");
-        _itemInfoText.text = _item_list[index]["description"].ToString().Replace("\"", "");
-        _selectingItemId = index;
+        _selectingItemId = id;
+        CleanInfo();
+        for (int i = 0; i < _item_list.Count; i++)
+        {   
+            if (_item_list[i]["id"].AsInt == _selectingItemId)
+            {
+                _itemName.text = _item_list[i]["name"].ToString().Replace("\"", "");
+                _itemInfoText.text = _item_list[i]["description"].ToString().Replace("\"", "");
+            }
+        }
 
         for(int i =0;i<_item_box.Count;i++)
         {
-            if(_item_box[i]["id"].AsInt==_selectingItemId)
+            
+            if (_item_box[i]["id"].AsInt==_selectingItemId)
             {
                 _amount = _item_box[i]["amount"].AsInt;
             }
@@ -111,6 +117,12 @@ public void OnItemPressed(int index)
         {
             Destroy(transform.GetChild(i).gameObject);
         }
+    }
+
+    public void CleanInfo()
+        {
+        _itemName.text = "";
+        _itemInfoText.text = "";
     }
 
     public void Equip()

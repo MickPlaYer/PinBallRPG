@@ -10,15 +10,14 @@ public class TradeSystem : MonoBehaviour {
     JSONNode _heroInfo;
     JSONNode _item_list;
     JSONNode _item_box;
-    JSONNode _equipment;
-    int _selectingItemId=0;
+ //   JSONNode _equipment;
     // Use this for initialization
     void Start () {
         //_heroData = (GameObject.FindGameObjectWithTag("HeroData") as GameObject).GetComponent<HeroData3>();
         _item_box = JSON.Parse(_heroData.getBox());
         _item_list = JSON.Parse(_heroData.getList());
         _heroInfo = JSON.Parse(_heroData.getData());
-        _equipment = JSON.Parse(_heroData.getEqu());
+      //  _equipment = JSON.Parse(_heroData.getEqu());
     }
 	
 	// Update is called once per frame

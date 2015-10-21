@@ -7,13 +7,13 @@ public class GameStart : MonoBehaviour {
     public Slider _levelSelect;
 
     public HeroData3 _heroData;
-    float _bAtk=0, _bHp=0, _bRe=0;
-    string hero;
+   // float _bAtk=0, _bHp=0, _bRe=0;
+   // string hero;
     // Use this for initialization
     public void Start () {
         _levelSelect.maxValue = _heroData.getMaxLevel();
         _levelSelect.value = _levelSelect.maxValue;
-         hero = PlayerPrefs.GetString("battle_value", _heroData.getData());
+         //hero = PlayerPrefs.GetString("battle_value", _heroData.getData());
        
         setValue();
     }
@@ -31,6 +31,6 @@ public class GameStart : MonoBehaviour {
 
     public void initialSlider()
     {
-        _levelSelect.value = 1;
+        _levelSelect.value = _heroData.getMaxLevel();
     }
 }
