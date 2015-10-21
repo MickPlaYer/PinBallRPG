@@ -474,8 +474,7 @@ MonoBehaviour:
   - {fileID: 337827539}
   - {fileID: 79883071}
   _comboBox: {fileID: 1706380553}
-  _debugLevel: 0
-  bottom: -8.5
+  _deadBottom: -8.5
   _barLeft: {fileID: 976198429}
   _barRight: {fileID: 1384883567}
   _boss: {fileID: 1118355375}
@@ -3862,7 +3861,7 @@ MonoBehaviour:
   _levelPad: {fileID: 1465396540}
   _sprite: {fileID: 1118355374}
   _ring: {fileID: 1334903614}
-  _back: {fileID: 1252967213}
+  _shadow: {fileID: 1252967213}
 --- !u!114 &1118355376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4392,7 +4391,7 @@ GameObject:
   - 4: {fileID: 1252967212}
   - 212: {fileID: 1252967213}
   m_Layer: 0
-  m_Name: Boss_B
+  m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

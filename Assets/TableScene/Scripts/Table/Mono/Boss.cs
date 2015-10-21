@@ -48,6 +48,7 @@ public class Boss : MonoBehaviour
             _atk *= GROW_VALUE;
             transform.localScale *= GROW_SIZE;
         }
+        Debug.Log(_hitPoint);
         _hitPointMax = _hitPoint;
     }
 
