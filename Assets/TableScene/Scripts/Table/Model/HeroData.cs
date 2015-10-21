@@ -9,10 +9,16 @@ public class HeroData
     private float _hitPoint;
     private float _attack;
     private float _recover;
-    private float _mana;
     private HPBar _hpBar;
 
     public HeroData()
+    {
+        LoadBattleValue();
+        _hpBar = GameObject.Find("HeroHPBar").GetComponent<HPBar>();
+    }
+
+    // Load hero battle value from PlayerPrefs.
+    private void LoadBattleValue()
     {
         TextAsset default_hero = Resources.Load(DEFAULT_HERO) as TextAsset;
         string hero = PlayerPrefs.GetString("battle_value", default_hero.text);
@@ -20,8 +26,6 @@ public class HeroData
         _hitPoint = _maxHitPoint = hero_data["hit_point"].AsFloat;
         _attack = hero_data["attack_point"].AsFloat;
         _recover = hero_data["recovery"].AsFloat;
-        _mana = hero_data["mana"].AsFloat;
-        _hpBar = GameObject.Find("HeroHPBar").GetComponent<HPBar>();
     }
 
     public float MaxHP
@@ -46,12 +50,6 @@ public class HeroData
     {
         get { return _recover; }
         set { _recover = value; }
-    }
-
-    public float MANA
-    {
-        get { return _mana; }
-        set { _mana = value; }
     }
     
     // Set hitpoint and follow its rule.

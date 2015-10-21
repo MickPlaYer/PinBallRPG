@@ -7,16 +7,35 @@ public class ItemBox
     private const string ITEM_BOX_KEY = "item_box";
     private const string HERO_DATA_KEY = "_hero_data";
     private const string DEFAULT_BOX = "default_item_box";
+    private const string DEFAULT_HERO = "default_hero_data";
     private List<ItemData> _boxList = new List<ItemData>();
+    private JSONNode _moneyBox;
 
     public ItemBox()
     {
-        // Load default from resources
+        LoadItemBox();
+        LoadMoneyBox();
+    }
+
+    // Load money box from PlayerPrefs.
+    private void LoadMoneyBox()
+    {
+        // Load default from resources.
+        TextAsset default_money_box = Resources.Load(DEFAULT_HERO) as TextAsset;
+        // Get string from PlayerPrefs.
+        string json = PlayerPrefs.GetString(HERO_DATA_KEY, default_money_box.text);
+        _moneyBox = JSON.Parse(json);
+    }
+
+    // Load item box from PlayerPrefs.
+    private void LoadItemBox()
+    {
+        // Load default from resources.
         TextAsset default_item_box = Resources.Load(DEFAULT_BOX) as TextAsset;
-        // Get string from PlayerPrefs
+        // Get string from PlayerPrefs.
         string itemBox = PlayerPrefs.GetString(ITEM_BOX_KEY, default_item_box.text);
         var data = JSON.Parse(itemBox);
-        // Transfer data to list
+        // Transfer data to list.
         for (int i = 0; i < data.Count; i++)
         {
             int id = data[i]["id"].AsInt;
@@ -45,12 +64,12 @@ public class ItemBox
     // Add up money to PlayerPrefs.
     private void SaveMoney(int gameLevel)
     {
-        string json = PlayerPrefs.GetString(HERO_DATA_KEY);
-        JSONNode data = JSON.Parse(json);
-        if (data == null)
-            return;
-        data["money"].AsInt = data["money"].AsInt += gameLevel * Random.Range(5, 11);
-        PlayerPrefs.SetString(HERO_DATA_KEY, data.ToString());
+        int money = _moneyBox["money"].AsInt;
+        // Random money get;
+        money += gameLevel * Random.Range(5, 11);
+        _moneyBox["money"].AsInt = money;
+        // Save data to PlayerPrefs
+        PlayerPrefs.SetString(HERO_DATA_KEY, _moneyBox.ToString());
     }
 
     // Save items to PlayerPrefs.

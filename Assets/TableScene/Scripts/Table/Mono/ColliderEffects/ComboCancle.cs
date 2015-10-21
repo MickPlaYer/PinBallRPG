@@ -13,7 +13,7 @@ public class ComboCancle : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Add combo count if hit by ball.
+        // Cancle combo count if hit by ball.
         if (collision.gameObject.name == "Ball")
         {
             _comboBox.CancleCombo();
