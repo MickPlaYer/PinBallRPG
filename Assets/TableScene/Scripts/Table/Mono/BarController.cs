@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class BarController : MonoBehaviour, IEventSystemHandler
 {
     private bool _isButtonHeld = false;
 
+    // The funtion call by IEventSystemHandler.
     public void Pressed(BaseEventData eventData)
     {
         _isButtonHeld = true;
     }
 
+    // The funtion call by IEventSystemHandler.
     public void Notpressed(BaseEventData eventData)
     {
         _isButtonHeld = false;

@@ -56,6 +56,6 @@ public class ItemBall : MonoBehaviour
 
     public Hole Hole
     {
-        set { _hole = value; }
+        set { _hole = value; } 
     }
 }

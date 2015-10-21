@@ -15,8 +15,7 @@ public class PinBallTable : MonoBehaviour
     private int _flyNumberIndex = 0;
     public GameObject[] _hideObject;
     public ComboBox _comboBox;
-    public int _debugLevel = 0;
-    public float bottom = -8.5f;
+    public float _deadBottom = -8.5f;
     public PinBallBar _barLeft;
     public PinBallBar _barRight;
     public Boss _boss;
@@ -29,11 +28,6 @@ public class PinBallTable : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (_debugLevel != 0)
-        {
-            PlayerPrefs.DeleteAll();
-            PlayerPrefs.SetInt("current_level", _debugLevel);
-        }
         _ballRD = _ball.GetComponent<Rigidbody2D>();
         _hero = new HeroData();
         PrepareSounds();
@@ -80,7 +74,7 @@ public class PinBallTable : MonoBehaviour
     // Get hero's attack damage by speed and combo.
     private int GetHeroAttackDamage(float speed)
     {
-        float comboBonus = 1f + (_comboBox.Count * 0.25f);
+        float comboBonus = 1f + (_comboBox.Count * 0.1f);
         float speedBonus = speed / BASIC_SPEED;
         int damage = (int)(_hero.ATK * comboBonus * speedBonus);
         if (damage < 1)
@@ -174,7 +168,7 @@ public class PinBallTable : MonoBehaviour
     // Check ball droping down from table.
     private void CheckBallDrop()
     {
-        if (_ball.transform.position.y < bottom)
+        if (_ball.transform.position.y < _deadBottom)
         {
             _hero.HP -= _boss.ATK * 5;
             if (_hero.HP <= 0)
@@ -234,22 +228,8 @@ public class PinBallTable : MonoBehaviour
     {
         if (_isEnd)
             return;
-        // For mobiles.
         _barLeft.ControlInput();
         _barRight.ControlInput();
-        // For PC debug.
-        if (Input.GetKey(KeyCode.A))
-            _barLeft.GoUp(KeyCode.A);
-        if (Input.GetKey(KeyCode.D))
-            _barRight.GoUp(KeyCode.D);
-        if (Input.GetKey(KeyCode.Escape))
-            _levelPad.LoadMenuScene();
-        if (Input.GetKeyDown(KeyCode.Q))
-            GameObject.Find("Dash").GetComponent<Dash>().Cast(Vector2.left);
-        if (Input.GetKeyDown(KeyCode.E))
-            GameObject.Find("Dash").GetComponent<Dash>().Cast(Vector2.right);
-        if (Input.GetKeyDown(KeyCode.W))
-            GameObject.Find("Shoot").GetComponent<Shoot>().Cast(100);
     }
 
     // Load sounds into hash table.

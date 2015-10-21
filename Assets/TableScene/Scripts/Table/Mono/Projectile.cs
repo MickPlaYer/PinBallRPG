@@ -17,13 +17,7 @@ public class Projectile : MonoBehaviour
         _rigidbody.velocity = _direction *= 10;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    // Make attraction
+    // Check hurt someone.
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag != "Wall")

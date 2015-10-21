@@ -16,21 +16,27 @@ public class Boss : MonoBehaviour
     public UILevelPad _levelPad;
     public SpriteRenderer _sprite;
     public SpriteRenderer _ring;
-    public SpriteRenderer _back;
+    public SpriteRenderer _shadow;
 
     // Use this for initialization
     void Start()
     {
         int gameLevel = PlayerPrefs.GetInt("current_level", 0);
+        RandomColor(gameLevel);
+        PrepareDropItems(gameLevel);
+        _levelPad.PickedIDList = _itemIDs;
+        CreateAttributeValues(gameLevel);
+    }
+
+    // Set color.
+    private void RandomColor(int gameLevel)
+    {
         Random.seed = gameLevel;
         _color = new Color(Random.value, Random.value, Random.value);
         _sprite.color = _color;
         _ring.color = _color;
-        _back.color = _color;
+        _shadow.color = _color;
         Random.seed = (int)System.DateTime.Now.Ticks;
-        PrepareDropItems(gameLevel);
-        _levelPad.PickedIDList = _itemIDs;
-        CreateAttributeValues(gameLevel);
     }
 
     // Create the boss's HP and ATK. 
