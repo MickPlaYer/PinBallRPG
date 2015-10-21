@@ -56,8 +56,8 @@ public class Boss : MonoBehaviour
     {
         int levelFloor = (gameLevel - 1) / LEVEL_RANGE + 1;
         int itemAmount = gameLevel % LEVEL_RANGE;
-        if (itemAmount == 0)
-            itemAmount = LEVEL_RANGE;
+        if (itemAmount == 0 || itemAmount == LEVEL_RANGE)
+            itemAmount = LEVEL_RANGE - 1;
         for (int i = 0; i < itemAmount; i++)
         {
             int id = Random.Range(0, levelFloor + 1);
