@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using SimpleJSON;
+using UnityEngine.UI;
 
 public class HeroData3 : MonoBehaviour {
     private const string DEFAULT_HERO = "default_hero_data";
+    public Toggle _shock;
     string _item_list;
     string _item_box;
     string _hero_data;
@@ -305,5 +307,23 @@ public class HeroData3 : MonoBehaviour {
         PlayerPrefs.SetString("item_box", _item_box);
         PlayerPrefs.SetString("_equipment", _equipment);
         PlayerPrefs.SetString("battle_value", _battleValue);
+    }
+
+    public void setShock()
+    {
+        if (_shock.isOn)
+            PlayerPrefs.SetInt("shock", 1);
+        else 
+            PlayerPrefs.SetInt("shock", 0);
+        Debug.Log(PlayerPrefs.GetInt("shock"));
+    }
+
+
+    public void getShock()
+    {
+        if (PlayerPrefs.GetInt("shock") == 1)
+            _shock.isOn = true;
+        else
+            _shock.isOn = false;
     }
 }

@@ -25,14 +25,7 @@ public class DashController : MonoBehaviour {
     }
     void Update()
     {
-        if (Input.GetKey("z"))
-        {
-            left();
-        }
-        if (Input.GetKey("c"))
-        {
-            right();
-        }
+       
         if (_leftTrigger)
         {
             _leftCD -= Time.deltaTime;
