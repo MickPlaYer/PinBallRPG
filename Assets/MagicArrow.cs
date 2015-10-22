@@ -6,10 +6,10 @@ public class MagicArrow : MonoBehaviour {
     public Shoot _shoot;
     public float _cd=0.5f;
     bool _trigger =false;
-    public int _extraDamage = 0,_staticDamage=5;
+    public int _extraDamage = 0,_staticDamage=5,_coif=1;
 	// Use this for initialization
 	void Start () {
-        _extraDamage =Mathf.RoundToInt( JSON.Parse(PlayerPrefs.GetString("battle_value"))["attack_point"].AsInt*0.01f);
+        _extraDamage =Mathf.RoundToInt( JSON.Parse(PlayerPrefs.GetString("battle_value"))["attack_point"].AsInt*0.01f)*_coif;
         Debug.Log(_extraDamage);
 	}
 	
