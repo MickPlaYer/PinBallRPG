@@ -243,14 +243,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "/D/RubyProjject/MegenetHtml/main.rb",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -303,17 +295,9 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/D/MyGit/PinBallRPG/Assets/Scripts",
-		"/D/MyGit/PinBallRPG/Assets/Scripts/Table",
-		"/D/MyGit/PinBallRPG/Assets/Scripts/Table/Model",
-		"/D/MyGit/PinBallRPG/Assets/Scripts/Table/Mono",
-		"/D/MyGit/PinBallRPG/Assets/Scripts/Table/Mono/ColliderEffects",
-		"/D/MyGit/PinBallRPG/Assets/Scripts/Table/Mono/UI"
-	],
 	"file_history":
 	[
+		"/D/RubyProjject/MegenetHtml/main.rb",
 		"/C/Documents and Settings/USE/My Documents/Downloads/theme-66.epf",
 		"/D/MyGit/PinBallRPG/Assets/Scripts/Table/Mono/PinBallTable.cs",
 		"/D/MyGit/PinBallRPG/Assets/Scripts/Table/Mono/Boss.cs",
@@ -437,37 +421,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "/D/RubyProjject/MegenetHtml/main.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
